@@ -1,0 +1,18 @@
+Nobody asked for my feedback. 
+I thought that you guys had enough to work on.  Not Good
+
+We are missing the Check-In page. 
+
+So, for Monday please do the following:
+1.	Add the check in page. 
+2.	After login – we should see 3 tiles. 
+o	Monthly Meeting Check-In. 
+o	Personal & Professional Goal Tracking
+o	Financial Metrics
+1.	On the Personal and Professional Goal tracking. 
+o	Drop down selection for each Month – 3 colors (Red, Orange and Green)
+
+Thanks,
+-rajesh
+
+PS: Copied Ajay on the email. 
