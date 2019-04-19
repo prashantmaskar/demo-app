@@ -1,0 +1,1365 @@
+<div class="main">
+  <div class="">
+    <div class="row details">
+      <div class="col-md-12 col-xs-12 details-container bg-white">
+        <h6>Add Goals</h6>
+        <div class="inner-content">
+          <form [formGroup]="projectForm" method="post" action="" (ngSubmit)="add_project(projectForm.value)">
+            <div class="row">
+            
+              <div class="col-md-6 col-xs-12 form-group m-0">
+                  <div class="input-container row">
+                      <div class="col-md-8 col-lg-9 col-12">
+                          <input tabindex="1" type="text" class="form-control"  placeholder="Name" name="projectname"
+                           appAutofocus [value]=user_name>
+                        </div>
+                      </div>
+                  <div class="input-container row">
+                    
+                      <div class="col-md-8 col-lg-9 col-12">
+                          <input tabindex="1" type="text" class="form-control" id="projectname" placeholder="Vision" name="projectname"
+                          formControlName="projectname" appAutofocus>
+                        <div class="alert error mat-error" *ngIf="!projectForm.controls['projectname'].valid && projectForm.controls['projectname'].touched">{{
+                          titleAlert }}</div>
+                      </div>
+                    </div>
+               
+              
+
+                  <div class="input-container row">
+                     
+                      <div class="col-md-8 col-lg-9 col-12">
+                          <input tabindex="2" type="text" class="form-control" id="projectshort" placeholder="Mission" name="projectshort"
+                        formControlName="projectshort">
+                      <div class="alert error mat-error" *ngIf="!projectForm.controls['projectshort'].valid && projectForm.controls['projectshort'].touched">{{
+                        titleAlert }}</div>
+                      </div>
+                    </div>
+                
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+             <h2>Business Goals</h2>
+            </div>
+             <div class="col-md-12">
+               <div class="table-striped">
+               <table class="table" >
+                 <thead>
+                   <tr>
+                    
+                     <th>Goal</th>
+                     <th>Jan</th>
+                     <th>Feb</th>
+                     <th>Mar</th>
+                     <th>Apr</th>
+                     <th>May</th>
+                     <th>June</th>
+                     <th>July</th>
+                     <th>Aug</th>
+                     <th>Sept</th>
+                     <th>Oct</th>
+                     <th>Nov</th>
+                     <th>Dec</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr>
+                    
+                      <td><textarea class="form-control" placeholder="Add Goal"></textarea></td>
+                     <td>
+                        <mat-form-field *ngIf="todays==0">                           
+                            <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                              <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                <span></span>
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                    
+                    </td>
+                    <td>
+                        <mat-form-field *ngIf="todays==1">                           
+                            <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                              <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                <span></span>
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </td>
+                      <td>
+                          <mat-form-field *ngIf="todays==2">                           
+                              <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                  <span></span>
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+  
+                      
+                      </td>
+                      <td>
+                          <mat-form-field *ngIf="todays==3">                           
+                              <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                  <span></span>
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field *ngIf="todays==4">                           
+                                <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                  <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                    <span></span>
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+    
+                        
+                        </td>
+                        <td>
+                            <mat-form-field *ngIf="todays==5">                           
+                                <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                  <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                    <span></span>
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                          </td>
+                          <td>
+                              <mat-form-field *ngIf="todays==6">                           
+                                  <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                    <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                      <span></span>
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+      
+                          
+                          </td>
+                          <td>
+                              <mat-form-field *ngIf="todays==7">                           
+                                  <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                    <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                      <span></span>
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field *ngIf="todays==8">                           
+                                    <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                      <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                        <span></span>
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+        
+                            
+                            </td>
+                            <td>
+                                <mat-form-field *ngIf="todays==9">                           
+                                    <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                      <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                        <span></span>
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td>
+                                  <mat-form-field *ngIf="todays==10">                           
+                                      <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                        <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                          <span></span>
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+          
+                              
+                              </td>
+                              <td>
+                                  <mat-form-field *ngIf="todays==11">                           
+                                      <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                        <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                          <span></span>
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                </td>
+
+                   </tr>
+                   <tr>
+                    
+                      <td><textarea class="form-control" placeholder="Add Goal"></textarea></td>
+                     <td>
+                        <mat-form-field *ngIf="todays==0">                           
+                            <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                              <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                <span></span>
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                    
+                    </td>
+                    <td>
+                        <mat-form-field *ngIf="todays==1">                           
+                            <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                              <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                <span></span>
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </td>
+                      <td>
+                          <mat-form-field *ngIf="todays==2">                           
+                              <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                  <span></span>
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+  
+                      
+                      </td>
+                      <td>
+                          <mat-form-field *ngIf="todays==3">                           
+                              <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                  <span></span>
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field *ngIf="todays==4">                           
+                                <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                  <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                    <span></span>
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+    
+                        
+                        </td>
+                        <td>
+                            <mat-form-field *ngIf="todays==5">                           
+                                <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                  <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                    <span></span>
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                          </td>
+                          <td>
+                              <mat-form-field *ngIf="todays==6">                           
+                                  <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                    <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                      <span></span>
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+      
+                          
+                          </td>
+                          <td>
+                              <mat-form-field *ngIf="todays==7">                           
+                                  <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                    <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                      <span></span>
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field *ngIf="todays==8">                           
+                                    <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                      <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                        <span></span>
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+        
+                            
+                            </td>
+                            <td>
+                                <mat-form-field *ngIf="todays==9">                           
+                                    <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                      <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                        <span></span>
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td>
+                                  <mat-form-field *ngIf="todays==10">                           
+                                      <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                        <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                          <span></span>
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+          
+                              
+                              </td>
+                              <td>
+                                  <mat-form-field *ngIf="todays==11">                           
+                                      <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                        <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                          <span></span>
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                </td>
+
+                   </tr>
+                   <tr>
+                    
+                      <td><textarea class="form-control" placeholder="Add Goal"></textarea></td>
+                     <td>
+                        <mat-form-field *ngIf="todays==0">                           
+                            <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                              <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                <span></span>
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                    
+                    </td>
+                    <td>
+                        <mat-form-field *ngIf="todays==1">                           
+                            <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                              <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                <span></span>
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </td>
+                      <td>
+                          <mat-form-field *ngIf="todays==2">                           
+                              <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                  <span></span>
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+  
+                      
+                      </td>
+                      <td>
+                          <mat-form-field *ngIf="todays==3">                           
+                              <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                  <span></span>
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field *ngIf="todays==4">                           
+                                <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                  <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                    <span></span>
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+    
+                        
+                        </td>
+                        <td>
+                            <mat-form-field *ngIf="todays==5">                           
+                                <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                  <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                    <span></span>
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                          </td>
+                          <td>
+                              <mat-form-field *ngIf="todays==6">                           
+                                  <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                    <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                      <span></span>
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+      
+                          
+                          </td>
+                          <td>
+                              <mat-form-field *ngIf="todays==7">                           
+                                  <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                    <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                      <span></span>
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field *ngIf="todays==8">                           
+                                    <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                      <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                        <span></span>
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+        
+                            
+                            </td>
+                            <td>
+                                <mat-form-field *ngIf="todays==9">                           
+                                    <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                      <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                        <span></span>
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td>
+                                  <mat-form-field *ngIf="todays==10">                           
+                                      <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                        <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                          <span></span>
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+          
+                              
+                              </td>
+                              <td>
+                                  <mat-form-field *ngIf="todays==11">                           
+                                      <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                        <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                          <span></span>
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                </td>
+
+                   </tr>
+                   <tr>
+                    
+                      <td><textarea class="form-control" placeholder="Add Goal"></textarea></td>
+                     <td>
+                        <mat-form-field *ngIf="todays==0">                           
+                            <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                              <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                <span></span>
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                    
+                    </td>
+                    <td>
+                        <mat-form-field *ngIf="todays==1">                           
+                            <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                              <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                <span></span>
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </td>
+                      <td>
+                          <mat-form-field *ngIf="todays==2">                           
+                              <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                  <span></span>
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+  
+                      
+                      </td>
+                      <td>
+                          <mat-form-field *ngIf="todays==3">                           
+                              <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                  <span></span>
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field *ngIf="todays==4">                           
+                                <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                  <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                    <span></span>
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+    
+                        
+                        </td>
+                        <td>
+                            <mat-form-field *ngIf="todays==5">                           
+                                <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                  <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                    <span></span>
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                          </td>
+                          <td>
+                              <mat-form-field *ngIf="todays==6">                           
+                                  <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                    <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                      <span></span>
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+      
+                          
+                          </td>
+                          <td>
+                              <mat-form-field *ngIf="todays==7">                           
+                                  <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                    <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                      <span></span>
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field *ngIf="todays==8">                           
+                                    <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                      <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                        <span></span>
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+        
+                            
+                            </td>
+                            <td>
+                                <mat-form-field *ngIf="todays==9">                           
+                                    <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                      <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                        <span></span>
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td>
+                                  <mat-form-field *ngIf="todays==10">                           
+                                      <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                        <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                          <span></span>
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+          
+                              
+                              </td>
+                              <td>
+                                  <mat-form-field *ngIf="todays==11">                           
+                                      <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                        <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                          <span></span>
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                </td>
+
+                   </tr>
+                   <tr>
+                    
+                      <td><textarea class="form-control" placeholder="Add Goal"></textarea></td>
+                     <td>
+                        <mat-form-field *ngIf="todays==0">                           
+                            <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                              <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                <span></span>
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                    
+                    </td>
+                    <td>
+                        <mat-form-field *ngIf="todays==1">                           
+                            <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                              <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                <span></span>
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </td>
+                      <td>
+                          <mat-form-field *ngIf="todays==2">                           
+                              <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                  <span></span>
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+  
+                      
+                      </td>
+                      <td>
+                          <mat-form-field *ngIf="todays==3">                           
+                              <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                  <span></span>
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field *ngIf="todays==4">                           
+                                <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                  <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                    <span></span>
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+    
+                        
+                        </td>
+                        <td>
+                            <mat-form-field *ngIf="todays==5">                           
+                                <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                  <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                    <span></span>
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                          </td>
+                          <td>
+                              <mat-form-field *ngIf="todays==6">                           
+                                  <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                    <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                      <span></span>
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+      
+                          
+                          </td>
+                          <td>
+                              <mat-form-field *ngIf="todays==7">                           
+                                  <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                    <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                      <span></span>
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field *ngIf="todays==8">                           
+                                    <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                      <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                        <span></span>
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+        
+                            
+                            </td>
+                            <td>
+                                <mat-form-field *ngIf="todays==9">                           
+                                    <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                      <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                        <span></span>
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                              </td>
+                              <td>
+                                  <mat-form-field *ngIf="todays==10">                           
+                                      <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                        <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                          <span></span>
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+          
+                              
+                              </td>
+                              <td>
+                                  <mat-form-field *ngIf="todays==11">                           
+                                      <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                        <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                          <span></span>
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                </td>
+
+                   </tr>
+
+                 </tbody>
+               </table>
+              </div>
+             </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                <h2>Personal Goals</h2>
+                </div>
+                <div class="col-md-12">
+                  <div class="table-striped">
+                      <table class="table" >
+                          <thead>
+                            <tr>
+                             
+                              <th >Goal</th>
+                              <th >Jan</th>
+                              <th >Feb</th>
+                              <th >Mar</th>
+                              <th >Apr</th>
+                              <th >May</th>
+                              <th >June</th>
+                              <th >July</th>
+                              <th >Aug</th>
+                              <th >Sept</th>
+                              <th >Oct</th>
+                              <th >Nov</th>
+                              <th >Dec</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                               
+                                 <td><textarea class="form-control" placeholder="Add Goal"></textarea></td>
+                                <td>
+                                   <mat-form-field *ngIf="todays==0">                           
+                                       <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                         <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                           <span></span>
+                                         </mat-option>
+                                       </mat-select>
+                                     </mat-form-field>
+           
+                               
+                               </td>
+                               <td>
+                                   <mat-form-field *ngIf="todays==1">                           
+                                       <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                         <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                           <span></span>
+                                         </mat-option>
+                                       </mat-select>
+                                     </mat-form-field>
+                                 </td>
+                                 <td>
+                                     <mat-form-field *ngIf="todays==2">                           
+                                         <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                           <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                             <span></span>
+                                           </mat-option>
+                                         </mat-select>
+                                       </mat-form-field>
+             
+                                 
+                                 </td>
+                                 <td>
+                                     <mat-form-field *ngIf="todays==3">                           
+                                         <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                           <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                             <span></span>
+                                           </mat-option>
+                                         </mat-select>
+                                       </mat-form-field>
+                                   </td>
+                                   <td>
+                                       <mat-form-field *ngIf="todays==4">                           
+                                           <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                             <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                               <span></span>
+                                             </mat-option>
+                                           </mat-select>
+                                         </mat-form-field>
+               
+                                   
+                                   </td>
+                                   <td>
+                                       <mat-form-field *ngIf="todays==5">                           
+                                           <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                             <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                               <span></span>
+                                             </mat-option>
+                                           </mat-select>
+                                         </mat-form-field>
+                                     </td>
+                                     <td>
+                                         <mat-form-field *ngIf="todays==6">                           
+                                             <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                               <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                 <span></span>
+                                               </mat-option>
+                                             </mat-select>
+                                           </mat-form-field>
+                 
+                                     
+                                     </td>
+                                     <td>
+                                         <mat-form-field *ngIf="todays==7">                           
+                                             <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                               <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                 <span></span>
+                                               </mat-option>
+                                             </mat-select>
+                                           </mat-form-field>
+                                       </td>
+                                       <td>
+                                           <mat-form-field *ngIf="todays==8">                           
+                                               <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                 <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                   <span></span>
+                                                 </mat-option>
+                                               </mat-select>
+                                             </mat-form-field>
+                   
+                                       
+                                       </td>
+                                       <td>
+                                           <mat-form-field *ngIf="todays==9">                           
+                                               <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                 <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                   <span></span>
+                                                 </mat-option>
+                                               </mat-select>
+                                             </mat-form-field>
+                                         </td>
+                                         <td>
+                                             <mat-form-field *ngIf="todays==10">                           
+                                                 <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                   <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                     <span></span>
+                                                   </mat-option>
+                                                 </mat-select>
+                                               </mat-form-field>
+                     
+                                         
+                                         </td>
+                                         <td>
+                                             <mat-form-field *ngIf="todays==11">                           
+                                                 <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                   <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                     <span></span>
+                                                   </mat-option>
+                                                 </mat-select>
+                                               </mat-form-field>
+                                           </td>
+           
+                              </tr>
+                              <tr>
+                               
+                                 <td><textarea class="form-control" placeholder="Add Goal"></textarea></td>
+                                <td>
+                                   <mat-form-field *ngIf="todays==0">                           
+                                       <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                         <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                           <span></span>
+                                         </mat-option>
+                                       </mat-select>
+                                     </mat-form-field>
+           
+                               
+                               </td>
+                               <td>
+                                   <mat-form-field *ngIf="todays==1">                           
+                                       <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                         <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                           <span></span>
+                                         </mat-option>
+                                       </mat-select>
+                                     </mat-form-field>
+                                 </td>
+                                 <td>
+                                     <mat-form-field *ngIf="todays==2">                           
+                                         <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                           <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                             <span></span>
+                                           </mat-option>
+                                         </mat-select>
+                                       </mat-form-field>
+             
+                                 
+                                 </td>
+                                 <td>
+                                     <mat-form-field *ngIf="todays==3">                           
+                                         <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                           <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                             <span></span>
+                                           </mat-option>
+                                         </mat-select>
+                                       </mat-form-field>
+                                   </td>
+                                   <td>
+                                       <mat-form-field *ngIf="todays==4">                           
+                                           <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                             <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                               <span></span>
+                                             </mat-option>
+                                           </mat-select>
+                                         </mat-form-field>
+               
+                                   
+                                   </td>
+                                   <td>
+                                       <mat-form-field *ngIf="todays==5">                           
+                                           <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                             <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                               <span></span>
+                                             </mat-option>
+                                           </mat-select>
+                                         </mat-form-field>
+                                     </td>
+                                     <td>
+                                         <mat-form-field *ngIf="todays==6">                           
+                                             <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                               <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                 <span></span>
+                                               </mat-option>
+                                             </mat-select>
+                                           </mat-form-field>
+                 
+                                     
+                                     </td>
+                                     <td>
+                                         <mat-form-field *ngIf="todays==7">                           
+                                             <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                               <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                 <span></span>
+                                               </mat-option>
+                                             </mat-select>
+                                           </mat-form-field>
+                                       </td>
+                                       <td>
+                                           <mat-form-field *ngIf="todays==8">                           
+                                               <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                 <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                   <span></span>
+                                                 </mat-option>
+                                               </mat-select>
+                                             </mat-form-field>
+                   
+                                       
+                                       </td>
+                                       <td>
+                                           <mat-form-field *ngIf="todays==9">                           
+                                               <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                 <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                   <span></span>
+                                                 </mat-option>
+                                               </mat-select>
+                                             </mat-form-field>
+                                         </td>
+                                         <td>
+                                             <mat-form-field *ngIf="todays==10">                           
+                                                 <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                   <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                     <span></span>
+                                                   </mat-option>
+                                                 </mat-select>
+                                               </mat-form-field>
+                     
+                                         
+                                         </td>
+                                         <td>
+                                             <mat-form-field *ngIf="todays==11">                           
+                                                 <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                   <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                     <span></span>
+                                                   </mat-option>
+                                                 </mat-select>
+                                               </mat-form-field>
+                                           </td>
+           
+                              </tr>
+                              <tr>
+                               
+                                 <td><textarea class="form-control" placeholder="Add Goal"></textarea></td>
+                                <td>
+                                   <mat-form-field *ngIf="todays==0">                           
+                                       <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                         <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                           <span></span>
+                                         </mat-option>
+                                       </mat-select>
+                                     </mat-form-field>
+           
+                               
+                               </td>
+                               <td>
+                                   <mat-form-field *ngIf="todays==1">                           
+                                       <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                         <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                           <span></span>
+                                         </mat-option>
+                                       </mat-select>
+                                     </mat-form-field>
+                                 </td>
+                                 <td>
+                                     <mat-form-field *ngIf="todays==2">                           
+                                         <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                           <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                             <span></span>
+                                           </mat-option>
+                                         </mat-select>
+                                       </mat-form-field>
+             
+                                 
+                                 </td>
+                                 <td>
+                                     <mat-form-field *ngIf="todays==3">                           
+                                         <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                           <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                             <span></span>
+                                           </mat-option>
+                                         </mat-select>
+                                       </mat-form-field>
+                                   </td>
+                                   <td>
+                                       <mat-form-field *ngIf="todays==4">                           
+                                           <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                             <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                               <span></span>
+                                             </mat-option>
+                                           </mat-select>
+                                         </mat-form-field>
+               
+                                   
+                                   </td>
+                                   <td>
+                                       <mat-form-field *ngIf="todays==5">                           
+                                           <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                             <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                               <span></span>
+                                             </mat-option>
+                                           </mat-select>
+                                         </mat-form-field>
+                                     </td>
+                                     <td>
+                                         <mat-form-field *ngIf="todays==6">                           
+                                             <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                               <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                 <span></span>
+                                               </mat-option>
+                                             </mat-select>
+                                           </mat-form-field>
+                 
+                                     
+                                     </td>
+                                     <td>
+                                         <mat-form-field *ngIf="todays==7">                           
+                                             <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                               <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                 <span></span>
+                                               </mat-option>
+                                             </mat-select>
+                                           </mat-form-field>
+                                       </td>
+                                       <td>
+                                           <mat-form-field *ngIf="todays==8">                           
+                                               <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                 <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                   <span></span>
+                                                 </mat-option>
+                                               </mat-select>
+                                             </mat-form-field>
+                   
+                                       
+                                       </td>
+                                       <td>
+                                           <mat-form-field *ngIf="todays==9">                           
+                                               <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                 <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                   <span></span>
+                                                 </mat-option>
+                                               </mat-select>
+                                             </mat-form-field>
+                                         </td>
+                                         <td>
+                                             <mat-form-field *ngIf="todays==10">                           
+                                                 <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                   <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                     <span></span>
+                                                   </mat-option>
+                                                 </mat-select>
+                                               </mat-form-field>
+                     
+                                         
+                                         </td>
+                                         <td>
+                                             <mat-form-field *ngIf="todays==11">                           
+                                                 <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                   <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                     <span></span>
+                                                   </mat-option>
+                                                 </mat-select>
+                                               </mat-form-field>
+                                           </td>
+           
+                              </tr>
+                              <tr>
+                               
+                                 <td><textarea class="form-control" placeholder="Add Goal"></textarea></td>
+                                <td>
+                                   <mat-form-field *ngIf="todays==0">                           
+                                       <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                         <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                           <span></span>
+                                         </mat-option>
+                                       </mat-select>
+                                     </mat-form-field>
+           
+                               
+                               </td>
+                               <td>
+                                   <mat-form-field *ngIf="todays==1">                           
+                                       <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                         <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                           <span></span>
+                                         </mat-option>
+                                       </mat-select>
+                                     </mat-form-field>
+                                 </td>
+                                 <td>
+                                     <mat-form-field *ngIf="todays==2">                           
+                                         <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                           <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                             <span></span>
+                                           </mat-option>
+                                         </mat-select>
+                                       </mat-form-field>
+             
+                                 
+                                 </td>
+                                 <td>
+                                     <mat-form-field *ngIf="todays==3">                           
+                                         <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                           <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                             <span></span>
+                                           </mat-option>
+                                         </mat-select>
+                                       </mat-form-field>
+                                   </td>
+                                   <td>
+                                       <mat-form-field *ngIf="todays==4">                           
+                                           <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                             <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                               <span></span>
+                                             </mat-option>
+                                           </mat-select>
+                                         </mat-form-field>
+               
+                                   
+                                   </td>
+                                   <td>
+                                       <mat-form-field *ngIf="todays==5">                           
+                                           <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                             <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                               <span></span>
+                                             </mat-option>
+                                           </mat-select>
+                                         </mat-form-field>
+                                     </td>
+                                     <td>
+                                         <mat-form-field *ngIf="todays==6">                           
+                                             <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                               <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                 <span></span>
+                                               </mat-option>
+                                             </mat-select>
+                                           </mat-form-field>
+                 
+                                     
+                                     </td>
+                                     <td>
+                                         <mat-form-field *ngIf="todays==7">                           
+                                             <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                               <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                 <span></span>
+                                               </mat-option>
+                                             </mat-select>
+                                           </mat-form-field>
+                                       </td>
+                                       <td>
+                                           <mat-form-field *ngIf="todays==8">                           
+                                               <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                 <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                   <span></span>
+                                                 </mat-option>
+                                               </mat-select>
+                                             </mat-form-field>
+                   
+                                       
+                                       </td>
+                                       <td>
+                                           <mat-form-field *ngIf="todays==9">                           
+                                               <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                 <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                   <span></span>
+                                                 </mat-option>
+                                               </mat-select>
+                                             </mat-form-field>
+                                         </td>
+                                         <td>
+                                             <mat-form-field *ngIf="todays==10">                           
+                                                 <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                   <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                     <span></span>
+                                                   </mat-option>
+                                                 </mat-select>
+                                               </mat-form-field>
+                     
+                                         
+                                         </td>
+                                         <td>
+                                             <mat-form-field *ngIf="todays==11">                           
+                                                 <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                   <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                     <span></span>
+                                                   </mat-option>
+                                                 </mat-select>
+                                               </mat-form-field>
+                                           </td>
+           
+                              </tr>
+                              <tr>
+                               
+                                 <td><textarea class="form-control" placeholder="Add Goal"></textarea></td>
+                                <td>
+                                   <mat-form-field *ngIf="todays==0">                           
+                                       <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                         <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                           <span></span>
+                                         </mat-option>
+                                       </mat-select>
+                                     </mat-form-field>
+           
+                               
+                               </td>
+                               <td>
+                                   <mat-form-field *ngIf="todays==1">                           
+                                       <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                         <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                           <span></span>
+                                         </mat-option>
+                                       </mat-select>
+                                     </mat-form-field>
+                                 </td>
+                                 <td>
+                                     <mat-form-field *ngIf="todays==2">                           
+                                         <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                           <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                             <span></span>
+                                           </mat-option>
+                                         </mat-select>
+                                       </mat-form-field>
+             
+                                 
+                                 </td>
+                                 <td>
+                                     <mat-form-field *ngIf="todays==3">                           
+                                         <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                           <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                             <span></span>
+                                           </mat-option>
+                                         </mat-select>
+                                       </mat-form-field>
+                                   </td>
+                                   <td>
+                                       <mat-form-field *ngIf="todays==4">                           
+                                           <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                             <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                               <span></span>
+                                             </mat-option>
+                                           </mat-select>
+                                         </mat-form-field>
+               
+                                   
+                                   </td>
+                                   <td>
+                                       <mat-form-field *ngIf="todays==5">                           
+                                           <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                             <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                               <span></span>
+                                             </mat-option>
+                                           </mat-select>
+                                         </mat-form-field>
+                                     </td>
+                                     <td>
+                                         <mat-form-field *ngIf="todays==6">                           
+                                             <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                               <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                 <span></span>
+                                               </mat-option>
+                                             </mat-select>
+                                           </mat-form-field>
+                 
+                                     
+                                     </td>
+                                     <td>
+                                         <mat-form-field *ngIf="todays==7">                           
+                                             <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                               <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                 <span></span>
+                                               </mat-option>
+                                             </mat-select>
+                                           </mat-form-field>
+                                       </td>
+                                       <td>
+                                           <mat-form-field *ngIf="todays==8">                           
+                                               <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                 <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                   <span></span>
+                                                 </mat-option>
+                                               </mat-select>
+                                             </mat-form-field>
+                   
+                                       
+                                       </td>
+                                       <td>
+                                           <mat-form-field *ngIf="todays==9">                           
+                                               <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                 <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                   <span></span>
+                                                 </mat-option>
+                                               </mat-select>
+                                             </mat-form-field>
+                                         </td>
+                                         <td>
+                                             <mat-form-field *ngIf="todays==10">                           
+                                                 <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                   <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                     <span></span>
+                                                   </mat-option>
+                                                 </mat-select>
+                                               </mat-form-field>
+                     
+                                         
+                                         </td>
+                                         <td>
+                                             <mat-form-field *ngIf="todays==11">                           
+                                                 <mat-select (selectionChange)="onChange($event,$event.value)" [ngStyle]="{'background-color':selectedColor}">
+                                                   <mat-option  *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.value}">
+                                                     <span></span>
+                                                   </mat-option>
+                                                 </mat-select>
+                                               </mat-form-field>
+                                           </td>
+           
+                              </tr>
+           
+                            </tbody>
+                        </table>
+                 </div>
+                </div>
+               </div>
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-6">
+                <button tabindex="4" type="submit" class="btn btn-primary float-right" name="submit_project" [disabled]="!projectForm.valid">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

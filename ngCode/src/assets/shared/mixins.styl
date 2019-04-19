@@ -1,0 +1,84 @@
+// RESPONSIVE ----------------------
+
+// use sparingly and ONLY for components that will require over-riding code for desktop
+$phone-small-down = 'screen and (max-width: ' + $phone-small-width + ')'
+$phone-down = 'screen and (max-width: ' + $phone-width + ')'
+$tablet-down = 'screen and (max-width: ' + ($desktop-width - .062) + ')'
+
+// your main media queries
+$phone-small-up = 'screen and (min-width: ' + $phone-small-width + ')'
+$phone-up = 'screen and (min-width: ' + $phone-width + ')'
+$tablet-up = 'screen and (min-width: ' + $tablet-width + ')'
+$desktop-up = 'screen and (min-width: ' + $desktop-width + ')'
+$desktop-large-down = 'screen and (max-width: ' + ($desktop-large-width - 0.01) + ')'
+$desktop-large-up = 'screen and (min-width: ' + $desktop-large-width + ')'
+$desktop-xl-up = 'screen and (min-width: ' + $desktop-xl-width + ')'
+$desktop-hd-up = 'screen and (min-width: ' + $desktop-hd-width + ')'
+
+$desktop-xl-screen = 'screen and (min-width: ' + $desktop-large-width + ')' and 'screen and (max-width: ' + $desktop-xl-navigation + ')'
+$desktop-xl-screen-up = 'screen and (min-width: ' + $desktop-xl-navigation + ')'
+
+$mobile-viewport = 375;
+sizeVW(fontSize)
+	unit(fontSize / ($mobile-viewport/100), 'vw')
+
+vendor-prefix(property, value)
+	-moz-{property} value
+	-Webkit-{property} value
+	-ms-{property} value
+	-o-{property} value
+	{property} value
+
+custom-radio()
+	.container
+		display block
+		position relative
+		padding-left 35px
+		margin-bottom 0
+		cursor pointer
+		font-size 22px
+		-webkit-user-select none
+		-moz-user-select none
+		-ms-user-select none
+		user-select none
+		& input
+			position absolute
+			opacity 0
+			cursor pointer
+	.checkmark
+		position absolute
+		top -3px
+		left 0
+		height 20px
+		width 20px
+		background-color #ffffff
+		border 1px solid #000000
+		border-radius 50%
+		&:after
+			content ""
+			position absolute
+			display none
+	.container:hover input ~ .checkmark
+		background-color  #00578b
+	.container input:checked ~ .checkmark
+		background-color #00578b
+	.container input:checked ~ .checkmark:after
+		display block
+	.container .checkmark:after
+		top 5px
+		left 5px
+		width 8px
+		height 8px
+		border-radius 50%
+		background white
+	.container:hover input ~ .checkmark:after
+		top 5px
+		left 5px
+		width 8px
+		height 8px
+		border-radius 50%
+		background white
+
+
+
+	

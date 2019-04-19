@@ -1,0 +1,50 @@
+
+.sidenav-content
+    margin 0 0 0 0
+    background-color #222d32
+    .side-nav
+        background-color #222d32
+        height calc(100vh - 60px)
+        width 100%
+        float left
+        .main-sidebar 
+            .sidebar
+                ul
+                    margin  0
+                    padding 0
+                    list-style none
+                    li
+                        padding 5px
+                        list-style none
+                        margin  5px 0 5px
+                        color #fff
+                        &:hover
+                            a
+                                background-color $color-blue-secondary
+                        &.active
+                            a
+                                background-color $color-blue-secondary
+                        a
+                            text-decoration none
+                            color #fff
+                            display flex
+                            padding: 10px
+                            span 
+                                margin-left 5px
+                        ul
+                            display none
+                            &.open
+                                display block
+                        ul.treeview-menu
+                            background-color #303b40
+                            padding 0 20px
+
+                            li
+                                a
+                                    background-color #303b40
+                                &:hover
+                                    a
+                                        background-color #065780
+                                &.active
+                                    a
+                                        background-color #065780

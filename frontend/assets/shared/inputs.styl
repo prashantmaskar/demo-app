@@ -1,0 +1,99 @@
+.quantity-main
+	border 1px solid $gray-border
+	height 46px
+	.input-quantity
+		display inline-block
+		width calc(100% - 100px)
+		height 44px
+		float left
+		margin 0 
+		border-width 0 1px 0 1px
+		vendor-prefix(border-radius, 0)
+		text-align center
+		font-weight bold
+		-moz-appearance textfield
+		font-size $base-font-size
+		margin 0
+		&::-webkit-outer-spin-button
+				-webkit-appearance none
+		&::-webkit-inner-spin-button
+				-webkit-appearance none
+		&:focus
+			border-color $gray-border
+	.quantity-button
+		display inline-block
+		height 44px
+		background $color-white
+		border none
+		float left
+		width 50px
+		cursor pointer
+		position relative
+		&.plus-quantity-button
+			&::after
+				content ''
+				background url(/assets/icons/icon-plus-black.svg)
+				height 15px
+				width 15px
+				background-size cover
+				display inline-block
+				position absolute
+				top 50%
+				left 50%
+				margin -8px 0 0 -8px
+				background-repeat no-repeat
+		&:hover
+			&::after
+				background url(/assets/icons/icon-plus-blue.svg)
+				background-repeat no-repeat
+		&.minus-quantity-button
+			&.disabled
+				cursor default
+				&:hover
+					&::after
+						background url(/assets/icons/icon-minus-gray.svg)
+				&::after
+					background url(/assets/icons/icon-minus-gray.svg)
+					background-repeat no-repeat
+					
+			&::after
+				content ''
+				background $color-black
+				height 3px
+				width 15px
+				background-size cover
+				display inline-block
+				position absolute
+				top 50%
+				left 50%
+				margin -2px 0 0 -8px
+			&:hover
+				&::after
+					background $color-cyan
+
+	&.cart-quantity
+		margin-top 6px
+		max-width 130px
+
+		.input-quantity
+			width calc(100% - 80px)
+
+		.quantity-button
+			width 40px
+
+.digital-product-quantity
+	width 50px !important
+	height 44px !important
+	border 1px solid $gray-border !important
+	background none
+	font-size $base-font-size
+	color $color-taupe-gray
+	display inline-block
+	margin-right 10px
+	float left
+	text-align center
+	
+	&.cart-quantity
+		float none
+		margin-top 6px
+		display block

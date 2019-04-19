@@ -1,0 +1,577 @@
+<div class="main">
+  <div class="">
+    <div class="row details">
+      <div class="col-md-12 col-xs-12 details-container bg-white">
+        <h6>Goals Details</h6>
+        <div class="inner-content">
+            <form  method="post" action="" >
+              <div class="row">
+              
+                <div class="col-md-6 col-xs-12 form-group m-0">
+                    <div class="input-container row">
+                        <div class="col-md-8 col-lg-9 col-12">
+                          <input *ngIf="user_role==2"  type="text" class="form-control" readonly [value]=user_name>
+                            <select class="form-control" *ngIf="user_role==1">
+                              <option >Rajesh</option>
+                              <option>Shreyash</option>
+                              <option>Zalak</option>
+                            </select>
+                          </div>
+                        </div>
+                    <div class="input-container row">
+                      
+                        <div class="col-md-8 col-lg-9 col-12">
+                            <input tabindex="1" type="text" class="form-control" id="projectname" placeholder="Vision" name="projectname"
+                             appAutofocus>
+                          
+                        </div>
+                      </div>
+                 
+                
+  
+                    <div class="input-container row">
+                       
+                        <div class="col-md-8 col-lg-9 col-12">
+                            <input tabindex="2" type="text" class="form-control" id="projectshort" placeholder="Mission" name="projectshort">
+                         
+                        
+                        </div>
+                      </div>
+                  
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+               <h2>Business Goals</h2>
+                  </div>
+               <div class="col-md-12">
+                 <div class="table-striped">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            
+                            <th>Goal</th>
+                            <th>Jan</th>
+                            <th>Feb</th>
+                            <th>Mar</th>
+                            <th>Apr</th>
+                            <th>May</th>
+                            <th>June</th>
+                            <th>July</th>
+                            <th>Aug</th>
+                            <th>Sept</th>
+                            <th>Oct</th>
+                            <th>Nov</th>
+                            <th>Dec</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                         
+                                <td>
+                                  <p>
+                                    Finalize private label product lines & have inventory in stock at all locations
+                                  </p>
+                                </td>
+                                <td>
+                                    <span *ngIf="todays>=0" style="background:red;width:50px;height:20px; display:block"></span>
+                                  </td>
+                                  <td>
+                                      <span *ngIf="todays>=1" style="background:red;width:50px;height:20px; display:block"></span>
+                                    </td>
+                                    <td>
+                                        <span *ngIf="todays>=2" style="background:green;width:50px;height:20px; display:block"></span>
+                                      </td>
+                                      <td>
+                                          <span *ngIf="todays>=3" style="background:orange;width:50px;height:20px; display:block"></span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="todays>=4" style="background:red;width:50px;height:20px; display:block"></span>
+                                          </td>
+                                          <td>
+                                              <span *ngIf="todays>=5"  style="background:orange;width:50px;height:20px; display:block"></span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="todays>=6" style="background:green;width:50px;height:20px; display:block"></span>
+                                              </td>
+                                              <td>
+                                                  <span *ngIf="todays>=7" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                </td>
+                                                <td>
+                                                    <span *ngIf="todays>=8" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                  </td>
+                                                  <td>
+                                                      <span *ngIf="todays>=9" style="background:green;width:50px;height:20px; display:block"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span *ngIf="todays>=10" style="background:red;width:50px;height:20px; display:block"></span>
+                                                      </td>
+                                                      <td>
+                                                          <span *ngIf="todays>=11" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                        </td>
+                                                        
+              
+                                 </tr>
+                              <tr>
+                         
+                                  <td>
+                                    <p>
+                                        Hire 3 or more Independent Rep agencies to promote private label product lines
+  
+                                  </p>
+                                </td>
+                                <td>
+                                    <span *ngIf="todays>=0" style="background:red;width:50px;height:20px; display:block"></span>
+                                  </td>
+                                  <td>
+                                      <span *ngIf="todays>=1" style="background:red;width:50px;height:20px; display:block"></span>
+                                    </td>
+                                    <td>
+                                        <span *ngIf="todays>=2" style="background:green;width:50px;height:20px; display:block"></span>
+                                      </td>
+                                      <td>
+                                          <span *ngIf="todays>=3" style="background:orange;width:50px;height:20px; display:block"></span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="todays>=4" style="background:red;width:50px;height:20px; display:block"></span>
+                                          </td>
+                                          <td>
+                                              <span *ngIf="todays>=5"  style="background:orange;width:50px;height:20px; display:block"></span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="todays>=6" style="background:green;width:50px;height:20px; display:block"></span>
+                                              </td>
+                                              <td>
+                                                  <span *ngIf="todays>=7" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                </td>
+                                                <td>
+                                                    <span *ngIf="todays>=8" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                  </td>
+                                                  <td>
+                                                      <span *ngIf="todays>=9" style="background:green;width:50px;height:20px; display:block"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span *ngIf="todays>=10" style="background:red;width:50px;height:20px; display:block"></span>
+                                                      </td>
+                                                      <td>
+                                                          <span *ngIf="todays>=11" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                        </td>
+                                                        
+              
+                                 </tr>
+                                <tr>
+                         
+                                    <td>
+                                        <p>
+                                            Expand product lines and inventory balances in Chicago so that we can better service customers
+  
+      
+                                      </p>
+                                    </td>
+                                    <td>
+                                        <span *ngIf="todays>=0" style="background:red;width:50px;height:20px; display:block"></span>
+                                      </td>
+                                      <td>
+                                          <span *ngIf="todays>=1" style="background:red;width:50px;height:20px; display:block"></span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="todays>=2" style="background:green;width:50px;height:20px; display:block"></span>
+                                          </td>
+                                          <td>
+                                              <span *ngIf="todays>=3" style="background:orange;width:50px;height:20px; display:block"></span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="todays>=4" style="background:red;width:50px;height:20px; display:block"></span>
+                                              </td>
+                                              <td>
+                                                  <span *ngIf="todays>=5"  style="background:orange;width:50px;height:20px; display:block"></span>
+                                                </td>
+                                                <td>
+                                                    <span *ngIf="todays>=6" style="background:green;width:50px;height:20px; display:block"></span>
+                                                  </td>
+                                                  <td>
+                                                      <span *ngIf="todays>=7" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span *ngIf="todays>=8" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                      </td>
+                                                      <td>
+                                                          <span *ngIf="todays>=9" style="background:green;width:50px;height:20px; display:block"></span>
+                                                        </td>
+                                                        <td>
+                                                            <span *ngIf="todays>=10" style="background:red;width:50px;height:20px; display:block"></span>
+                                                          </td>
+                                                          <td>
+                                                              <span *ngIf="todays>=11" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                            </td>
+                                                            
+                  
+                                     </tr>
+                                  <tr>
+                         
+                                      <td>
+                                          <p>
+                                              Maintain better inventory balances at all locations (30-60 day) and improve margins
+                                        </p>
+                                      </td>
+                                      <td>
+                                          <span *ngIf="todays>=0" style="background:red;width:50px;height:20px; display:block"></span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="todays>=1" style="background:red;width:50px;height:20px; display:block"></span>
+                                          </td>
+                                          <td>
+                                              <span *ngIf="todays>=2" style="background:green;width:50px;height:20px; display:block"></span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="todays>=3" style="background:orange;width:50px;height:20px; display:block"></span>
+                                              </td>
+                                              <td>
+                                                  <span *ngIf="todays>=4" style="background:red;width:50px;height:20px; display:block"></span>
+                                                </td>
+                                                <td>
+                                                    <span *ngIf="todays>=5"  style="background:orange;width:50px;height:20px; display:block"></span>
+                                                  </td>
+                                                  <td>
+                                                      <span *ngIf="todays>=6" style="background:green;width:50px;height:20px; display:block"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span *ngIf="todays>=7" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                      </td>
+                                                      <td>
+                                                          <span *ngIf="todays>=8" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                        </td>
+                                                        <td>
+                                                            <span *ngIf="todays>=9" style="background:green;width:50px;height:20px; display:block"></span>
+                                                          </td>
+                                                          <td>
+                                                              <span *ngIf="todays>=10" style="background:red;width:50px;height:20px; display:block"></span>
+                                                            </td>
+                                                            <td>
+                                                                <span *ngIf="todays>=11" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                              </td>
+                                                              
+                    
+                                       </tr>
+                                    <tr>
+                         
+                                       <td>
+                                          <p>
+                                              Maintain better inventory balances at all locations (30-60 day) and improve margins
+                                        </p>
+                                      </td>
+                                      <td>
+                                          <span *ngIf="todays>=0" style="background:red;width:50px;height:20px; display:block"></span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="todays>=1" style="background:red;width:50px;height:20px; display:block"></span>
+                                          </td>
+                                          <td>
+                                              <span *ngIf="todays>=2" style="background:green;width:50px;height:20px; display:block"></span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="todays>=3" style="background:orange;width:50px;height:20px; display:block"></span>
+                                              </td>
+                                              <td>
+                                                  <span *ngIf="todays>=4" style="background:red;width:50px;height:20px; display:block"></span>
+                                                </td>
+                                                <td>
+                                                    <span *ngIf="todays>=5"  style="background:orange;width:50px;height:20px; display:block"></span>
+                                                  </td>
+                                                  <td>
+                                                      <span *ngIf="todays>=6" style="background:green;width:50px;height:20px; display:block"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span *ngIf="todays>=7" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                      </td>
+                                                      <td>
+                                                          <span *ngIf="todays>=8" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                        </td>
+                                                        <td>
+                                                            <span *ngIf="todays>=9" style="background:green;width:50px;height:20px; display:block"></span>
+                                                          </td>
+                                                          <td>
+                                                              <span *ngIf="todays>=10" style="background:red;width:50px;height:20px; display:block"></span>
+                                                            </td>
+                                                            <td>
+                                                                <span *ngIf="todays>=11" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                              </td>
+                                                              
+                    
+                                       </tr>
+                        </tbody>
+                      </table>
+
+                </div>
+               </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                  <h2>Personal Goals</h2>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="table-striped">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                         
+                          <th>Goal</th>
+                          <th>Jan</th>
+                          <th>Feb</th>
+                          <th>Mar</th>
+                          <th>Apr</th>
+                          <th>May</th>
+                          <th>June</th>
+                          <th>July</th>
+                          <th>Aug</th>
+                          <th>Sept</th>
+                          <th>Oct</th>
+                          <th>Nov</th>
+                          <th>Dec</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                       
+                              <td>
+                                <p>
+                                    Travel: Celebrate 25 year anniversary w\Amy (June 4)
+                                </p>
+                              </td>
+                              <td>
+                               <span *ngIf="todays>=0" style="background:red;width:50px;height:20px; display:block"></span>
+                             </td>
+                             <td>
+                                 <span *ngIf="todays>=1" style="background:red;width:50px;height:20px; display:block"></span>
+                               </td>
+                               <td>
+                                   <span *ngIf="todays>=2" style="background:green;width:50px;height:20px; display:block"></span>
+                                 </td>
+                                 <td>
+                                     <span *ngIf="todays>=3" style="background:orange;width:50px;height:20px; display:block"></span>
+                                   </td>
+                                   <td>
+                                       <span *ngIf="todays>=4" style="background:red;width:50px;height:20px; display:block"></span>
+                                     </td>
+                                     <td>
+                                         <span *ngIf="todays>=5"  style="background:orange;width:50px;height:20px; display:block"></span>
+                                       </td>
+                                       <td>
+                                           <span *ngIf="todays>=6" style="background:green;width:50px;height:20px; display:block"></span>
+                                         </td>
+                                         <td>
+                                             <span *ngIf="todays>=7" style="background:orange;width:50px;height:20px; display:block"></span>
+                                           </td>
+                                           <td>
+                                               <span *ngIf="todays>=8" style="background:orange;width:50px;height:20px; display:block"></span>
+                                             </td>
+                                             <td>
+                                                 <span *ngIf="todays>=9" style="background:green;width:50px;height:20px; display:block"></span>
+                                               </td>
+                                               <td>
+                                                   <span *ngIf="todays>=10" style="background:red;width:50px;height:20px; display:block"></span>
+                                                 </td>
+                                                 <td>
+                                                     <span *ngIf="todays>=11" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                   </td>
+                                                   
+         
+                            </tr>
+                            <tr>
+                       
+                                <td>
+                                  <p>
+                                      Travel: Family trip with parents this summer, and family trip to Ottawa, Canada to visit billet kids
+
+                                </p>
+                              </td>
+                              <td>
+                                  <span *ngIf="todays>=0" style="background:red;width:50px;height:20px; display:block"></span>
+                                </td>
+                                <td>
+                                    <span *ngIf="todays>=1" style="background:red;width:50px;height:20px; display:block"></span>
+                                  </td>
+                                  <td>
+                                      <span *ngIf="todays>=2" style="background:green;width:50px;height:20px; display:block"></span>
+                                    </td>
+                                    <td>
+                                        <span *ngIf="todays>=3" style="background:orange;width:50px;height:20px; display:block"></span>
+                                      </td>
+                                      <td>
+                                          <span *ngIf="todays>=4" style="background:red;width:50px;height:20px; display:block"></span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="todays>=5"  style="background:orange;width:50px;height:20px; display:block"></span>
+                                          </td>
+                                          <td>
+                                              <span *ngIf="todays>=6" style="background:green;width:50px;height:20px; display:block"></span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="todays>=7" style="background:orange;width:50px;height:20px; display:block"></span>
+                                              </td>
+                                              <td>
+                                                  <span *ngIf="todays>=8" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                </td>
+                                                <td>
+                                                    <span *ngIf="todays>=9" style="background:green;width:50px;height:20px; display:block"></span>
+                                                  </td>
+                                                  <td>
+                                                      <span *ngIf="todays>=10" style="background:red;width:50px;height:20px; display:block"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span *ngIf="todays>=11" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                      </td>
+                                                      
+            
+                               </tr>
+                              <tr>
+                       
+                                  <td>
+                                      <p>
+                                          College: Start touring colleges with my 16 year old daughter Kristin
+
+                                    </p>
+                                  </td>
+                                  <td>
+                                      <span *ngIf="todays>=0" style="background:red;width:50px;height:20px; display:block"></span>
+                                    </td>
+                                    <td>
+                                        <span *ngIf="todays>=1" style="background:red;width:50px;height:20px; display:block"></span>
+                                      </td>
+                                      <td>
+                                          <span *ngIf="todays>=2" style="background:green;width:50px;height:20px; display:block"></span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="todays>=3" style="background:orange;width:50px;height:20px; display:block"></span>
+                                          </td>
+                                          <td>
+                                              <span *ngIf="todays>=4" style="background:red;width:50px;height:20px; display:block"></span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="todays>=5"  style="background:orange;width:50px;height:20px; display:block"></span>
+                                              </td>
+                                              <td>
+                                                  <span *ngIf="todays>=6" style="background:green;width:50px;height:20px; display:block"></span>
+                                                </td>
+                                                <td>
+                                                    <span *ngIf="todays>=7" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                  </td>
+                                                  <td>
+                                                      <span *ngIf="todays>=8" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span *ngIf="todays>=9" style="background:green;width:50px;height:20px; display:block"></span>
+                                                      </td>
+                                                      <td>
+                                                          <span *ngIf="todays>=10" style="background:red;width:50px;height:20px; display:block"></span>
+                                                        </td>
+                                                        <td>
+                                                            <span *ngIf="todays>=11" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                          </td>
+                                                          
+                
+                                   </tr>
+                                <tr>
+                       
+                                    <td>
+                                        <p>
+                                            Finances: Prepare to purchase commercial realestate in 2020
+                                      </p>
+                                    </td>
+                                    <td>
+                                        <span *ngIf="todays>=0" style="background:red;width:50px;height:20px; display:block"></span>
+                                      </td>
+                                      <td>
+                                          <span *ngIf="todays>=1" style="background:red;width:50px;height:20px; display:block"></span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="todays>=2" style="background:green;width:50px;height:20px; display:block"></span>
+                                          </td>
+                                          <td>
+                                              <span *ngIf="todays>=3" style="background:orange;width:50px;height:20px; display:block"></span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="todays>=4" style="background:red;width:50px;height:20px; display:block"></span>
+                                              </td>
+                                              <td>
+                                                  <span *ngIf="todays>=5"  style="background:orange;width:50px;height:20px; display:block"></span>
+                                                </td>
+                                                <td>
+                                                    <span *ngIf="todays>=6" style="background:green;width:50px;height:20px; display:block"></span>
+                                                  </td>
+                                                  <td>
+                                                      <span *ngIf="todays>=7" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span *ngIf="todays>=8" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                      </td>
+                                                      <td>
+                                                          <span *ngIf="todays>=9" style="background:green;width:50px;height:20px; display:block"></span>
+                                                        </td>
+                                                        <td>
+                                                            <span *ngIf="todays>=10" style="background:red;width:50px;height:20px; display:block"></span>
+                                                          </td>
+                                                          <td>
+                                                              <span *ngIf="todays>=11" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                            </td>
+                                                            
+                  
+                                     </tr>
+                                  <tr>
+                       
+                                      <td>
+                                        <p>
+                                            Wife: Support her in going to classes and starting to work
+                                      </p>
+                                    </td>
+                                    <td>
+                                        <span *ngIf="todays>=0" style="background:red;width:50px;height:20px; display:block"></span>
+                                      </td>
+                                      <td>
+                                          <span *ngIf="todays>=1" style="background:red;width:50px;height:20px; display:block"></span>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="todays>=2" style="background:green;width:50px;height:20px; display:block"></span>
+                                          </td>
+                                          <td>
+                                              <span *ngIf="todays>=3" style="background:orange;width:50px;height:20px; display:block"></span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="todays>=4" style="background:red;width:50px;height:20px; display:block"></span>
+                                              </td>
+                                              <td>
+                                                  <span *ngIf="todays>=5"  style="background:orange;width:50px;height:20px; display:block"></span>
+                                                </td>
+                                                <td>
+                                                    <span *ngIf="todays>=6" style="background:green;width:50px;height:20px; display:block"></span>
+                                                  </td>
+                                                  <td>
+                                                      <span *ngIf="todays>=7" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span *ngIf="todays>=8" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                      </td>
+                                                      <td>
+                                                          <span *ngIf="todays>=9" style="background:green;width:50px;height:20px; display:block"></span>
+                                                        </td>
+                                                        <td>
+                                                            <span *ngIf="todays>=10" style="background:red;width:50px;height:20px; display:block"></span>
+                                                          </td>
+                                                          <td>
+                                                              <span *ngIf="todays>=11" style="background:orange;width:50px;height:20px; display:block"></span>
+                                                            </td>
+                                                            
+                  
+                                     </tr>
+                      </tbody>
+                    </table>
+                   </div>
+                  </div>
+                 </div>
+  
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

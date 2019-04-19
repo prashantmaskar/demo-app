@@ -1,0 +1,345 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <button class="add-task btn-save btn btn-primary " mat-raised-button mat-save color="save" (click)="opentask()">Add Task</button>
+  </div>
+  <div cdkDropListGroup id="sortableKanbanBoards" class="row">
+
+    <div class="example-container content-box col-12 col-md-3 col-lg-3" *ngFor="let col of columns ;let i = index">
+      <h6 class="workflow-headings col{{i}}">{{col.name}} <span class="badge badge-pill badge-info float-right">{{col.ticketarr.length}}</span></h6>
+      <div id={{col.id}} cdkDropList [cdkDropListData]="col.ticketarr" (cdkDropListDropped)="drop($event)"  >
+        <div [ngClass]="{'task_overdue': today >taklist.end_date,task_done:col.name=='Complete'}" class="example-box" *ngFor="let taklist of col.ticketarr ;let i = index"
+          cdkDragBoundary="#sortableKanbanBoards" [cdkDragData]="taklist.ticket_id" (click)=edittask(taklist.ticket_id)
+          cdkDrag >
+          <span (click)=openDialog($event,taklist.ticket_id) class="delete-icon" *ngIf="col.name=='To Do' && user_role == '1'"><i class="fa fa-trash" aria-hidden="true"></i></span>
+          <div><strong>{{taklist.slug}}  -  {{taklist.name}}</strong></div>
+          <p class="task_info" >{{taklist.description}}</p>
+          <div [ngClass]="{hidedays: col.name =='Complete'}">{{Dayremain(today, taklist.end_date)}}{{dayremain}}</div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- Modal for task -->
+  <div class="backdrop" [ngStyle]="{'display':displaytask}"></div>
+  <div class="modal" id="myModal1" [ngStyle]="{'display':displaytask}" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">New Task</h4>
+          <button type="button" class="close" (click)="onCloseHandledtask()" data-dismiss="modal">&times;</button>
+
+        </div>
+        <div class="modal-body">
+          <!--<mat-tab-group animationDuration="0ms">
+          <mat-tab   label="ABOUT">-->
+          <form [formGroup]="taskaddForm" method="post" action="" (ngSubmit)="addtask(taskaddForm.value)">
+
+            <div class="row">
+              <div class="col-md-12 overhidd">
+                <mat-form-field>
+                  <input matInput placeholder="Task Name*" formControlName="taskname">
+                  <mat-error *ngIf="!taskaddForm.controls['taskname'].valid && taskaddForm.controls['taskname'].touched">{{
+                    titleAlert }}</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field>
+                  <textarea matInput placeholder="Description" formControlName="taskdesc"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+
+                <mat-form-field>
+                  <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="Start Date" formControlName="tasksdate"
+                    readonly>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field>
+                  <input matInput [min]="minDate" [matDatepicker]="picker1" placeholder="End Date" formControlName="taskedate"
+                    readonly>
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                <span *ngIf="taskaddForm.errors" class="mat-error error">{{ taskaddForm.errors?.dates | json }}</span>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field>
+                  <mat-select placeholder="Assigned To" [formControl]="member" multiple>
+                    <mat-option *ngFor="let team of nteammembrs" [value]="team.user_id">{{team.first_name}} {{team.last_name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <button type="submit" mat-raised-button mat-primary color="primary" class=" btn-md " name="submit_signin"
+                  [disabled]="!taskaddForm.valid">Add Task</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Modal for task -->
+  <div class="backdrop" [ngStyle]="{'display':displayetask}"></div>
+  <div class="modal" id="myModal1" [ngStyle]="{'display':displayetask}" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Task Details</h4>
+          <button type="button" class="close" (click)="onCloseHandledetask()" data-dismiss="modal">&times;</button>
+
+        </div>
+        <div class="modal-body">
+          <mat-tab-group animationDuration="0ms" [selectedIndex]="0">
+            <mat-tab label="ABOUT">
+              <form [formGroup]="taskeditForm" method="post" action="" (ngSubmit)="updatetask(taskeditForm.value)">
+
+               
+                  <div class="row">
+                      <div class="col-6">
+                              <div class="overhidd">
+                                <input type="hidden" formControlName="task_id" />
+                                <mat-form-field>
+                                  <input matInput placeholder="Task Name*" formControlName="taskname">
+                                  <mat-error *ngIf="!taskeditForm.controls['taskname'].valid && taskeditForm.controls['taskname'].touched">{{
+                                    titleAlert }}</mat-error>
+                                </mat-form-field>
+                              </div>
+                      </div>
+                      <div class="col-6">
+                          <div class="overhidd">
+                              <mat-form-field>
+                                  <mat-select placeholder="Status" [formControl]="status" >
+                                    <mat-option *ngFor="let sts of stscolumns" [value]="sts.id" [disabled]="sts.column_name=='To Do'">{{sts.column_name}}</mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                          </div>
+                      </div>
+                  </div>
+               
+                <mat-form-field>
+                  <textarea matInput placeholder="Description" formControlName="taskdesc"></textarea>
+                      
+                </mat-form-field>
+
+                <div class="row">
+                    <div class="col-6">
+                              <mat-form-field>
+                                <input matInput  (dateChange)="fnUpdateMinMaxDates(etasksdateId.value,etaskedateId.value)"
+                                  [matDatepicker]="picker2" placeholder="Start Date" formControlName="etasksdate" readonly
+                                  #etasksdateId>
+                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                <mat-datepicker #picker2> </mat-datepicker>
+                              </mat-form-field>
+                    </div>
+                    <div class="col-6">
+
+                              <mat-form-field>
+                                <input matInput [min]="minDates" (dateChange)="fnUpdateMinMaxDates(etasksdateId.value,etaskedateId.value)"
+                                  [matDatepicker]="picker3" placeholder="End Date" formControlName="etaskedate" readonly
+                                  #etaskedateId>
+                                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                                <mat-datepicker #picker3></mat-datepicker>
+                              </mat-form-field>
+                              <span *ngIf="taskeditForm.errors" class="mat-error error">{{ taskeditForm.errors?.dates | json }}</span>
+                    </div>
+                  </div>
+                <div class="row">
+                    <div class="col-12">
+                      <mat-form-field>
+                        <mat-select placeholder="Assigned To" [formControl]="member" multiple [(value)]="selected">
+                          <mat-option *ngFor="let team of nteammembrs" [value]="team.user_id">{{team.first_name}} {{team.last_name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                </div>
+                <div class="row task-content">
+                    <div class="col-4">
+                      <mat-form-field>
+                        <input matInput placeholder="Estimated Hours" formControlName="taskehour" #estimateHours (keyup)="actualhour()" (keypress)="numberOnly($event)">
+                        <mat-error *ngIf="!taskeditForm.controls['taskehour'].valid && taskeditForm.controls['taskehour'].touched">{{
+                          titleAlert }}</mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field>
+                        <input matInput placeholder="Actual Hours" formControlName="taskahour" #actualHours (keyup)="actualhour()" (keypress)="numberOnly($event)">
+                        <mat-error *ngIf="!taskeditForm.controls['taskahour'].valid && taskeditForm.controls['taskahour'].touched">{{
+                          titleAlert }}</mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4 over-element">
+                      <span>
+                        Over/Under: {{hourstat|minusSignToParens}}
+                        <span [ngClass]="{redbar:hourstat>0,greenbar:hourstat<=0}"></span>
+                      </span>
+                    </div>
+                </div>
+                <div class="row task-content">
+                    <div class="col-12">
+                      <mat-form-field>
+                        <input matInput placeholder="Rework Hours" formControlName="taskrhour" (keypress)="numberOnly($event)">
+                        <mat-error *ngIf="!taskeditForm.controls['taskrhour'].valid && taskeditForm.controls['taskrhour'].touched">{{
+                          titleAlert }}</mat-error>
+                      </mat-form-field>
+                    </div>
+                </div>
+                
+
+                <button type="submit" #buttontxtt mat-raised-button mat-save color="primary" class=" btn-md save-task btn-save btn btn-primary " name="submit_signin"
+                  [disabled]="!taskeditForm.valid">Save</button>
+
+              </form>
+            </mat-tab>
+            <mat-tab label="COMMENTS">
+              <form [formGroup]="commentForm" method="post" action="" (ngSubmit)="addcomment(commentForm.value)">
+
+                <input type="hidden" formControlName="task_id" />
+                <input type="hidden" formControlName="comment_id" />
+
+                <mat-form-field>
+                  <textarea matInput placeholder="Comment" formControlName="taskcomment" [mention]="items"></textarea>
+                  <mat-error *ngIf="!commentForm.controls['taskcomment'].valid && commentForm.controls['taskcomment'].touched">{{
+                    titleAlert }}</mat-error>
+                </mat-form-field>
+                <button type="submit" #buttontxttm mat-raised-button mat-save color="primary" class=" btn-md "
+                  [disabled]="!commentForm.valid" name="submit_signin">Add Comment</button>
+
+              </form>
+
+              <div class="comment " id="comment-13104">
+                <div class="row overhidd" *ngFor="let comment of comments ;let i = index">
+                  <div class="col-md-2">
+                    <div class="account-photo account-regular-user">
+                      {{comment.first_name}}
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="author">
+                      <h4 class="username">{{comment.first_name}}
+                        <small>{{comment.entry_time | timeAgo}}</small>
+                      </h4>
+                    </div>
+                    {{comment.comment}} <br>
+                    <div class="comment-reply-btn"> </div>
+                  </div>
+                  <div class="col-md-2">
+                    <i *ngIf="comment.created_by == user_role " class="fa fa-pencil" (click)="commentEdit(comment,comment.comment_id)">&nbsp;</i>
+                    <i *ngIf="comment.created_by == user_role " class="fa fa-trash-o" aria-hidden="true" (click)="openDialogs1($event,comment.comment_id)">&nbsp;</i>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+
+              </div>
+            </mat-tab>
+            <mat-tab label="FILES">
+
+              <input class="overhidd" name="upload" #upload_attachment type="file" (change)="selectFile($event)"
+                placeholder="Upload file" accept=".pdf,.doc,.docx,.png,.jpeg">
+
+
+              <div class="comment " id="comment-13104">
+                <div class="row overhidd" *ngFor="let attach of attachments ;let i = index">
+                  <div class="col-md-2">
+                    <div class="account-attach account-regular-user">
+                      <img src="assets/images/fileicon.png" class="img-thumbnail">
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="author">
+                      <h4 class="username">{{attach.first_name}}
+                        <small>{{attach.entry_time | timeAgo}}</small>
+                      </h4>
+                    </div>
+                    {{attach.display_name}}<br>
+                    <div class="comment-reply-btn">
+                      <a href='{{rootapi}}assets/uploads/{{attach.file}}' target="_blank" download><span> <i class="fa fa-file-pdf-o"></i>
+                          Download &nbsp;</span></a>
+                      <span (click)="openDialogs($event,attach.attachment_id)">&nbsp;<i class="fa fa-trash-o" aria-hidden="true"></i>
+                        Delete</span>
+                    </div>
+                  </div>
+
+                  <div class="clearfix"></div>
+                </div>
+
+              </div>
+
+            </mat-tab>
+            <mat-tab label="FEEDBACK">
+              <form *ngIf="user_role == '1' || user_role == '3' || islead==true" [formGroup]="feedbackForm" method="post" action="" (ngSubmit)="addtaskfeedback(feedbackForm.value)">
+
+                <input type="hidden" formControlName="task_id" />
+                <input type="hidden" formControlName="feedback_id" />
+
+                <mat-form-field>
+                  <textarea matInput placeholder="Feedback" formControlName="taskfeedback" [mention]="items"></textarea>
+                  <mat-error *ngIf="!feedbackForm.controls['taskfeedback'].valid && feedbackForm.controls['taskfeedback'].touched">{{
+                    titleAlert }}</mat-error>
+                </mat-form-field>
+                <button type="submit" #buttontxttmf mat-raised-button mat-save color="primary" class=" btn-md "
+                  [disabled]="!feedbackForm.valid" name="submit_signin">Add Feedback</button>
+
+              </form>
+
+              <div class="comment " id="comment-13104">
+                <div class="row overhidd" *ngFor="let feedback of feedbacks ;let i = index">
+                  <div class="col-md-2">
+                    <div class="account-photo account-regular-user">
+                      {{feedback.first_name}}
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="author">
+                      <h4 class="username">{{feedback.first_name}}
+                        <small>{{feedback.entry_time | timeAgo}}</small>
+                      </h4>
+                    </div>
+                    {{feedback.feedback}} <br>
+                    <div class="feedback-reply-btn"> </div>
+                  </div>
+                  <div class="col-md-2">
+                    <i *ngIf="feedback.created_by == user_role " class="fa fa-pencil" (click)="feedbackEdit(feedback,feedback.feedback_id)">&nbsp;</i>
+                    <i *ngIf="feedback.created_by == user_role " class="fa fa-trash-o" aria-hidden="true" (click)="del_feedback(feedback.feedback_id,i)">&nbsp;</i>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+
+              </div>
+
+            </mat-tab>
+          </mat-tab-group>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>

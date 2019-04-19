@@ -1,0 +1,60 @@
+h6
+    font-size $base-font-size
+    font-weight bold
+    padding 20px 0 0 0
+    color $color-black
+.project-name
+    a
+        span
+            font-size $small-font-size
+            font-weight bold
+.borderless td
+    border none
+.borderless th
+    background-color $color-maroon-primary
+    color $color-white
+.status-color
+    &::after
+        content ''
+        width 50px
+        height 20px
+        margin-left 10px        
+        position absolute
+    &.green
+        &::after
+            background-color $color-green
+    &.red
+        &::after
+            background-color $color-red
+    &.orange
+        &::after
+            background-color $color-orange
+.table-responsive
+    padding 0 30%
+    text-align left
+    margin-bottom 20px
+    border none
+    table
+        border 1px solid #ccc
+        .small
+            width 145px
+            // text-align right
+        .smallModal
+            width 10%
+            text-align center
+        .checkmark
+            left 50%
+            transform translateX(-50%)
+        .score-1
+            padding-right 55px
+        .container
+            display block
+            position relative
+            padding-left 35px
+            margin-bottom 12px
+            cursor pointer
+            font-size 22px
+            -webkit-user-select none
+            -moz-user-select none
+            -ms-user-select none
+            user-select none

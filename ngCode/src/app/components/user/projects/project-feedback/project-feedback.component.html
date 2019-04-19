@@ -1,0 +1,101 @@
+<div class="main content-box">
+    <button type="button" (click)="goBack()" class="back-button btn-save btn btn-primary" mat-save color="save" name="submit_signin">Back</button>
+  <div class="container-fluid">
+    <div class="row ">        
+      <form class="col-md-12" [formGroup]="feedbackForm" method="post" action="" (ngSubmit)="feedback(feedbackForm.value)">
+        <div class="header-feedback">
+            <div class="row table-header">
+          
+                <div class="col-md-4" >
+                    <mat-form-field>
+                        <mat-select tabindex="1" placeholder="Projects" [formControl]="project" [(value)]="selected" (selectionChange)="onChange($event.value)" >
+                          <mat-option *ngFor="let proj of projects" [value]="proj.proj_id" >{{proj.name}} ({{proj.shortform}})</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <mat-select tabindex="2" placeholder="Task" [formControl]="tasks" >
+                          <mat-option *ngFor="let ticket of ticketlist" [value]="ticket.ticket_id">{{ticket.slug}} - {{ticket.name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+                <div class="col-md-4">            
+                  <span class="DRF-date"><strong>Date : {{todays | date: 'MM/dd/yyyy'}}</strong> </span>
+                </div>
+              </div>
+        </div>
+        
+        <div class="row">
+        <div class="col-12">
+          <div class="table-responsive table-striped">
+            <table class="table ">
+                <thead class="thead">
+                  <tr> 
+                    <th scope="col" colspan="6"></th>
+                    <th scope="col" class="small">NA</th>
+                    <th scope="col" class="small">Poor</th>
+                    <th scope="col" class="small">Below Average</th>
+                    <th scope="col" class="small">Average </th>
+                    <th scope="col" class="small">Good</th>
+                    <th scope="col" class="small">Excellent</th>
+                    <th scope="col" class="small">Comments</th>
+                  </tr>
+                </thead>
+                <tbody class="tbody">
+                  <tr  *ngFor="let feed_que of feedback_ques;let i = index">
+                    <td colspan="6"><p><strong>{{feed_que.question}}</strong></p></td>
+                    <td class="small"><label class="container">
+                      <input type="radio" name="q{{feed_que.id}}" value="0"  formControlName="q{{feed_que.id}}">
+                      <span class="checkmark"></span>
+                    </label></td>
+                    <td class="small"><label class="container">
+                        <input type="radio" name="q{{feed_que.id}}" value="1"  formControlName="q{{feed_que.id}}">
+                        <span class="checkmark"></span>
+                      </label></td>
+                    <td class="small"><label class="container">
+                        <input type="radio" name="q{{feed_que.id}}" value="2" formControlName="q{{feed_que.id}}">
+                        <span class="checkmark"></span>
+                      </label></td>
+                    <td class="small"><label class="container">
+                        <input type="radio" name="q{{feed_que.id}}" value="3" formControlName="q{{feed_que.id}}">
+                        <span class="checkmark"></span>
+                      </label></td>
+                    <td class="small"><label class="container">
+                        <input type="radio" name="q{{feed_que.id}}" value="4" formControlName="q{{feed_que.id}}">
+                        <span class="checkmark"></span>
+                      </label></td>
+                    <td class="small"><label class="container">
+                        <input type="radio" name="q{{feed_que.id}}" value="5" formControlName="q{{feed_que.id}}">
+                        <span class="checkmark"></span>
+                      </label></td>
+                      <td class="small">
+                          <input tabindex="3" type="text" name="q{{feed_que.id}}" class="additional-comment2 form-control"  formControlName="qc{{feed_que.id}}" placeholder="Comments" value="" >
+                      
+                       </td>
+                  </tr>
+                  <tr >
+                      <td colspan="6"><p><strong>Additional feedback</strong> </p></td>
+                      
+                      <td colspan="7" class="small">
+                          <input tabindex="4" class="additional-comment1 form-control" name="qcomment" formControlName="qcomment" placeholder="Comments" type="text"  >                      
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+              <button tabindex="5" type="submit" [disabled]="!feedbackForm.valid" class="feedback-submit btn-save btn btn-primary" mat-raised-button mat-save color="save" name="submit_signin">Submit</button>    
+          </div>
+        </div>
+        
+                            
+      </form>
+
+    </div>
+  </div>
+</div>

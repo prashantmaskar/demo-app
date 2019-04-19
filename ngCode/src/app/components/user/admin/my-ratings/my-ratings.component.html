@@ -1,0 +1,112 @@
+<div class="main content-box">
+    <div class="container-fluid">    
+          <div class="row">
+            <div class="col-12">
+                <h6>My Ratings</h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 p-0">
+              <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead">
+                      <tr>                   
+                        <th scope="col">Month </th>
+                        <th scope="col" class="text-right score-1">Score</th>
+                      </tr>
+                    </thead>
+                    <tbody class="tbody">
+                      <tr *ngFor="let rating of rating_list" >
+                        <td class="associate-name"><span>{{rating.month | monthname }}  {{rating.year }}</span></td>
+                        <td class="small"><span class="status-color" [ngClass]="{red:rating.avg_rating*2<=3.5,orange:rating.avg_rating*2>=3.6 && rating.avg_rating*2<=6.9,green:rating.avg_rating*2>=7}" >{{ rating.avg_rating | number: '1.1-1'}}</span><a (click)="showInDetails(rating.rating_id)" ><span class="view-detail" title="view in detail"><img width="22px" src="/assets/view.png" alt="Avatar" class="image"></span></a></td>
+                      </tr>  
+                   
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+          </div>          
+    </div>
+  </div>
+
+  <div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" id="myModal" [ngStyle]="{'display':display}" role="dialog">
+  <div class="modal-dialog custom-width">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Month: {{rmonth | monthname }} &nbsp; Year: {{ ryear }} &nbsp; Score: {{rrating}}<span class="status-color-header" [ngClass]="{red:rrating*2<=3.5,orange:rrating*2>=3.6 && rrating*2<=6.9,green:rrating*2>=7}" ><span class="status-color-header-inside"></span></span></h4>
+        <button type="button" class="close" (click)="closeDetails()" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+          <div class="main">
+              <div class="container-fluid">   
+                    <div class="row">
+                      <div class="col-12 p-0">                          
+                        <div class="table-responsive p-0">
+                          <table class="table table-striped">
+                            <thead class="thead">
+                              <tr> 
+                                <th scope="col" colspan="3"></th>
+                      
+                                <th scope="col " class="smallModal">Poor</th>
+                                <th scope="col " class="smallModal">Below Average</th>
+                                <th scope="col " class="smallModal">Average </th>
+                                <th scope="col " class="smallModal">Good</th>
+                                <th scope="col " class="smallModal">Excellent</th>
+                                <th scope="col " class="smallModal">Comments</th>
+                              </tr>
+                            </thead>
+                            <tbody class="tbody">
+                              
+                             <tr  *ngFor="let rate_info of rating_details">
+                                <td colspan="3"><p>{{rate_info.title}}</p></td>
+          
+                                <td class="smallModal"><label class="container mb-12">
+                                    <input type="radio"  checked="checked" value="1"  [ngClass]="{hidden: rate_info.rating!=1}" >
+                                    <span class="checkmark " [ngClass]="{hidden: rate_info.rating!=1}"></span>
+                                  </label></td>
+                                <td class="smallModal"><label class="container">
+                                    <input type="radio" checked="checked"  value="2" [ngClass]="{hidden: rate_info.rating!=2}">
+                                    <span class="checkmark " [ngClass]="{hidden: rate_info.rating!=2}"></span>
+                                  </label></td>
+                                <td class="smallModal"><label class="container">
+                                    <input type="radio" checked="checked"  value="3" [ngClass]="{hidden: rate_info.rating!=3}">
+                                    <span class="checkmark " [ngClass]="{hidden: rate_info.rating!=3}"></span>
+                                  </label></td>
+                                <td class="smallModal"><label class="container">
+                                    <input type="radio" checked="checked" value="4" [ngClass]="{hidden: rate_info.rating!=4}">
+                                    <span class="checkmark" [ngClass]="{hidden: rate_info.rating!=4}" ></span>
+                                  </label></td>
+                                <td class="smallModal"><label class="container">
+                                    <input type="radio" checked="checked"  value="5" [ngClass]="{hidden: rate_info.rating!=5}" >
+                                    <span class="checkmark " [ngClass]="{hidden: rate_info.rating!=5}"></span>
+                                  </label></td>
+                                  <td class="smallModal">
+                                      <span title={{rate_info.comment}} *ngIf="rate_info.comment"><i class="fa fa-comment" aria-hidden="true"></i></span>
+                                  </td>
+                              </tr>
+                              <tr >
+                                <td colspan="1"><p><strong>Additional feedback</strong> </p></td>
+                                
+                                <td colspan="8" class="small">
+                                   {{additional_comment}}                   
+                                </td>
+                              </tr>
+                        
+                            </tbody>
+                          </table>
+                          </div>
+                      </div>
+                    </div>   
+                       
+              </div>
+            </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+  

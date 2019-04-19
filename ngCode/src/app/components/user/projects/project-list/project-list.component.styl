@@ -1,0 +1,85 @@
+.content
+  padding-top 0 
+  padding-bottom 15px 
+  overflow hidden
+  .mat-card
+    border none
+    background none
+    box-shadow none
+    a
+      text-decoration none
+      .card
+        vendor-prefix(border-radius, 0)
+        background $color-white
+        color #1d3b4a
+        text-align center
+        position relative
+        padding: 0 0 25px 0;
+        min-height 160px
+        border-width 0 1px 10px
+        margin 0 0 10px 0 0
+        height 100%
+        &:hover
+          background-color #e2e2e2
+        &::before
+          content ''
+          border-style solid
+          border-width 10px 10px 0 0
+          position absolute
+          top 0
+          left 0
+          border-color $color-red transparent transparent
+          width 0
+          height 0
+          z-index 1
+        &.green
+          box-shadow inset 0px -5px 0px 0px green
+        &.red
+          box-shadow inset 0px -5px 0px 0px red
+        &.orange
+          box-shadow inset 0px -5px 0px 0px orange
+        .profile-thumb-block
+          height 130px
+          padding 0
+          margin 0 auto
+          display grid
+          &:after        
+            width 100px
+            content ''
+            // background url(/assets/icons/project-icon.svg) repeat 0 0
+            display block
+        .card-content
+          text-decoration none
+          text-align center
+          padding 0 15px
+          h4
+            text-decoration none
+            text-align center
+            margin-bottom 8px
+            text-transform capitalize
+            .inside
+              color green
+          p
+            padding 0
+            margin 0
+        .profile
+          width 150px
+.slogan-box
+  background-color #ededed
+  border 1px solid grey
+  padding 20px  
+  text-align center
+  top 50px
+  margin-bottom 100px  
+  position relative
+  display inline-block
+  border-radius 33px
+  left 50%
+  transform: translateX(-50%);
+.slogan
+  text-decoration none
+  text-align right
+  text-transform capitalize
+  width 100%
+  .inside
+    color green

@@ -1,0 +1,44 @@
+<section class="container-fluid">
+  <div class="row">
+    <div class="col-2 col-md-2 col-lg-2 col-xl-2 sidenav-content">
+      <div class="side-nav">
+        <aside class="main-sidebar">
+          <!-- sidebar: style can be found in sidebar.less -->
+          <section class="sidebar">
+            <!-- Sidebar user panel -->
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li *ngIf="user_role==2" [routerLinkActive]="['active']">
+                    <a [routerLink]="['addgoals']">
+                      <fa name="dashboard"></fa>
+                      <span>Add Goals</span>
+                    </a>
+                  </li>
+              <li [routerLinkActive]="['active']">
+                <a [routerLink]="['detail']">
+                  <fa name="th"></fa>
+                  <span>Goals Details</span>
+                </a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                  <a [routerLink]="['reports']">
+                    <fa name="th"></fa>
+                    <span>Financial Reports</span>
+                  </a>
+                </li>
+
+            </ul>
+          </section>
+          <!-- /.sidebar -->
+        </aside>
+      </div>
+    </div>
+  
+  <div class="col-10 col-md-10 col-lg-10 col-xl-10">
+    <section class="main-content content-box">
+      <router-outlet></router-outlet>
+    </section>
+  </div>
+</div>
+</section>

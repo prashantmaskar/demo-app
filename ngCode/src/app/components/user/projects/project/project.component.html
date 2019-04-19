@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 col-md-2 col-lg-2 col-xl-2 sidenav-content">
+      <div class="side-nav">
+        <aside class="main-sidebar">
+          <!-- sidebar: style can be found in sidebar.less -->
+          <section class="sidebar">
+            <!-- Sidebar user panel -->
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+
+              <li [routerLinkActive]="['active']">
+                <a [routerLink]="['workflow']">
+                  <fa name="th"></fa>
+                  <span>Workflow</span>
+                </a>
+              </li>
+
+              <!--<li class="treeview">
+            <a href="#">
+                <fa name="copy"></fa> 
+                <span>Files</span>
+              </a>
+          </li>-->
+              <li class="treeview" [routerLinkActive]="['active']">
+                <a [routerLink]="['./projectteam']">
+                  <fa name="users"></fa>
+                  <span>Team</span>
+                </a>
+
+              </li>
+              <!--<li class="treeview">
+            <a href="#">
+                <fa name="money"></fa> 
+                <span>Budget</span>
+              </a>
+          
+          </li>-->
+              <li class="treeview" [routerLinkActive]="['active']">
+                <a [routerLink]="['./settings']">
+                  <fa name="cog"></fa>
+                  <span>Settings</span>
+                </a>
+
+              </li>
+
+            </ul>
+          </section>
+          <!-- /.sidebar -->
+        </aside>
+      </div>
+    </div>
+    <div class="col-10 col-md-10 col-lg-10">
+      <section class="main-content">
+        <router-outlet></router-outlet>
+      </section>
+    </div>
+  </div>
+</div>

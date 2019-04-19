@@ -1,0 +1,49 @@
+<div class="main content-box">
+  <div class="container-fluid">
+  
+    <div class="row">
+        <div class="header-feedback">
+            <div class="row table-header">
+          
+                <div class="col-md-6" >
+                    <h6>Associate Rating </h6>
+                  
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <input tabindex="1" matInput [matDatepicker]="dp1" placeholder="Month and Year" [formControl]="ratemonth" readonly>
+                        <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                        <mat-datepicker #dp1 startView="multi-year" (yearSelected)="chosenYearHandler($event)" (monthSelected)="chosenMonthHandler($event, dp1)" >
+                        </mat-datepicker>
+                      </mat-form-field>
+                </div>
+                
+              </div>
+        </div>
+    </div>
+    <div class="row">     
+
+      <div class="col-12 p-0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="thead">
+              <tr>
+                <th scope="col">Associates </th>
+                <th scope="col" class="text-right">Score</th>
+              </tr>
+            </thead>
+            <tbody class="tbody">
+              <tr *ngFor="let rate_user of rate_user_list">
+                <td class="associate-name"><a [routerLink]="['../feedback-ratings']" [queryParams]="{user_id:rate_user.user_id,date:ratemonths}"><span>{{rate_user.first_name}}
+                      {{rate_user.last_name}}</span></a></td>
+                <td class="small"><span class="status-color" [ngClass]="{grey:rate_user.rating==0,red:rate_user.rating<1.75,orange:rate_user.rating>=1.8 && rate_user.rating<=3.45,green:rate_user.rating>=3.46}">{{
+                    rate_user.rating | number: '1.1-1'}}</span></td>
+              </tr>
+
+            </tbody>
+          </table>
+         
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+.siteheader-main
+  background-color $color-maroon-primary
+  background-image linear-gradient(to right, #bf3d3d , #8b0000)
+  .navbar
+    padding 0 15px
+    .app-name
+      color $color-white
+      text-align center
+      width 100%
+      position absolute
+    .mat-toolbar-single-row
+      height 100%
+      padding 0
+      box-shadow none
+      background none
+      .navbar-brand
+        width 110px
+        padding 0
+        margin -5px 0
+        background-image linear-gradient(to right, #bf3d3d, #b73434)
+      .navbar-collapse
+        display block
+        margin-right 0
+        .navbar-nav
+            margin-left 15px
+            flex-direction row
+            .dropdown
+                margin 0 0 0 15px
+                .dropdown-toggle
+                  color $color-white
+                  font-size $small-font-size
+                  line-height 56px
+                  text-decoration none
+                  padding 0
+                  &::after
+                    display none
+                  .fa
+                    margin-right 10px
+                  .fa-chevron-down
+                    margin-left 10px
+                  .label-warning
+                    background-color $color-orange
+                    padding .2em .6em .3em
+                    vendor-prefix(border-radius, .25em)
+                .dropdown-menu
+                  padding 0
+                  background-color $color-maroon-dark
+                  position absolute
+                  min-width 100%
+                  top 100%
+                  left auto
+                  right 0
+                  display none
+                  border-top 1px solid $color-maroon-dark
+                  vendor-prefix(border-radius, 0 0 5px 5px)
+                  vendor-prefix(transition-property, height)
+                  vendor-prefix(transition-duration, 60s)
+                  vendor-prefix(transition-timing-function, ease-in)
+                  vendor-prefix(transition-delay, 2s)
+                  z-index $below-content
+                  .dropdown-list
+                    border-top 1px solid $color-white
+                    &:first-child
+                      border-top none
+                    a
+                      color $color-white
+                      padding 10px 20px
+                      font-size $small-font-size
+                      text-decoration none
+                      display block
+                  &.open
+                      display block
+mark
+ background transparent
+ color #fff

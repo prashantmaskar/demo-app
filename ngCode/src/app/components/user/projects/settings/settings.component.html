@@ -1,0 +1,46 @@
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="content-box details-container ">        
+        <div class="inner-content bg-white">
+            <h6>General Settings</h6>
+        <div class="row"><div class="col-12 col-md-5 col-lg-5">
+            <div class="project_info" *ngFor="let project of project_detail">
+                <form [formGroup]="projeditForm" method="post" action="" (ngSubmit)="updateproject(projeditForm.value)">
+                  <div class="row">
+                    <div class="col-md-12 overhidd">
+                      <input type="hidden" formControlName="proj_id" />
+                      <mat-form-field>
+                        <input matInput placeholder="Project Title*" formControlName="proj_name" class="form-control" appAutofocus>
+                        <mat-error *ngIf="!projeditForm.controls['proj_name'].valid && projeditForm.controls['proj_name'].touched">{{
+                          titleAlert }}</mat-error>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput placeholder="Project Shortform*" formControlName="shortform" class="form-control">
+                        <mat-error *ngIf="!projeditForm.controls['shortform'].valid && projeditForm.controls['shortform'].touched">{{
+                          titleAlert }}</mat-error>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <mat-select placeholder="Client*" [formControl]="client" class="form-control">
+                          <mat-option *ngFor="let client of clients" [value]="client.id">{{client.c_name}}</mat-option>
+                         
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <button class="btn-danger  btn btn-primary mat-raised-button" mat-raised-button mat-warn color="warn" (click)=openDialog(project.proj_id)
+                  [class.show]="show" *ngIf="user_role==1" type="button">Delete Project</button>
+                <button class="btn-save btn btn-primary" type="submit"  mat-raised-button mat-save color="save"
+                  [class.show]="show" [disabled]="!projeditForm.valid" *ngIf="user_role==1" >Save Project</button>
+                </form>
+               
+              </div>
+
+
+        </div></div>
+        
+      </div>
+      </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,206 @@
+<div class="bg-white">
+  <div class="row details">
+    <div class="col-md-12 col-xs-12 details-container">
+      <h6>Manage Team Members</h6>
+    </div>
+    <div class="col-md-6 sectionhead-title" *ngIf="user_role==1">
+      <button class="btn btn-primary add-member" (click)="openteam()">Add Member</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class="thead">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th class="action-th">Action</th>
+            </tr>
+          </thead>
+          <tbody class="tbody">
+            <tr *ngFor="let team of teammembrs;let i = index">
+              <td>{{team.first_name}} {{team.last_name}}</td>
+              <td>{{team.email}}</td>
+              <td>{{team.designation}}</td>
+              <td class="action-td">
+                <button type="button" class="btn btn-info" (click)="onEdit(team.uid)" *ngIf="user_role==1"><i class="fa fa-edit"></i></button>
+                <!-- <button type="button" class="btn btn-danger" (click)="onDelete(i,team.uid)">Delete</button> -->
+                <button type="button" class="btn btn-danger" (click)="openDialog(i,team.uid)" *ngIf="user_role==1"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" id="myModal" [ngStyle]="{'display':display}" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Team Member</h4>
+        <button type="button" class="close" (click)="onCloseHandled()" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" [ngStyle]="{'display':display_msg}" role="alert">
+          <strong>Team Member Added successfully </strong>
+        </div>
+        <form [formGroup]="teamForm" method="post" action="" (ngSubmit)="add_team(teamForm.value)">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-material">
+                <input type="text" class="form-control" id="teammembername" placeholder="First Name*" name="fname"
+                  formControlName="teammembername" #focusauto>
+                <div class="alert" *ngIf="!teamForm.controls['teammembername'].valid && teamForm.controls['teammembername'].touched">{{
+                  titleAlert }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-material">
+                <input type="text" class="form-control" id="teammembername" placeholder="Last Name*" name="lname"
+                  formControlName="teammemberlname">
+                <div class="alert" *ngIf="!teamForm.controls['teammemberlname'].valid && teamForm.controls['teammemberlname'].touched">{{
+                  titleAlert }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-material">
+                <input type="email" class="form-control" id="membereamil" placeholder="Email*" name="membereamil"
+                  formControlName="membereamil">
+                <div class="alert" *ngIf="!teamForm.controls['membereamil'].valid && teamForm.controls['membereamil'].touched">{{
+                  titleAlert }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-material">
+                <select class="form-control" name="mainrole" formControlName="mainrole" placeholder="Select Role*">
+                  <option  value="null" disabled="true" [selected]="true">Select Role*</option>
+                  <option *ngFor="let designation of designations;let i = index" value="{{designation.id}}">{{designation.designation}}</option>
+
+                </select>
+                <div class="alert" *ngIf="!teamForm.controls['mainrole'].valid && teamForm.controls['mainrole'].touched">{{
+                  titleAlert }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-material">
+                <select class="form-control" name="utype" formControlName="utype" placeholder="Select Type*">
+                    <option  value="null" disabled="true" [selected]="true">Select Type*</option>
+                  <option *ngFor="let role of roles;let i = index" value="{{role.id}}">{{role.role}}</option>
+
+                </select>
+                <div class="alert" *ngIf="!teamForm.controls['utype'].valid && teamForm.controls['utype'].touched">{{
+                  titleAlert }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 m-b-20">
+              <button type="submit" class="btn btn-primary btn-md btn-block" name="submit_project" [disabled]="!teamForm.valid">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- Modal -->
+<div class="backdrop" [ngStyle]="{'display':display1}"></div>
+<!-- Edit Team Member -->
+<div class="modal" id="myModal1" [ngStyle]="{'display':display1}" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Update Team Member</h4>
+        <button type="button" class="close" (click)="onCloseHandled()" data-dismiss="modal">&times;</button>
+
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="editteamForm" method="post" action="" (ngSubmit)="update_team(editteamForm.value)">
+          <div class="row">
+            <div class="col-md-12">
+              <input type="hidden" name="user_id" formControlName="user_id">
+              <div class="form-group form-material">
+                <input type="text" class="form-control" id="teammembername" placeholder="First Name" name="fname"
+                  formControlName="teammembername" #focusauto>
+                <div class="alert" *ngIf="!editteamForm.controls['teammembername'].valid && editteamForm.controls['teammembername'].touched">{{
+                  titleAlert }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-material">
+                <input type="text" class="form-control" id="teammembername" placeholder="Last Name" name="lname"
+                  formControlName="teammemberlname">
+                <div class="alert" *ngIf="!editteamForm.controls['teammemberlname'].valid && editteamForm.controls['teammemberlname'].touched">{{
+                  titleAlert }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-material">
+                <input type="email" class="form-control" id="membereamil" placeholder="Email" name="membereamil"
+                  formControlName="membereamil" readonly>
+                <div class="alert" *ngIf="!editteamForm.controls['membereamil'].valid && editteamForm.controls['membereamil'].touched">{{
+                  titleAlert }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-material">
+                <select class="form-control" name="mainrole" formControlName="mainrole" placeholder="Select Role"
+                  [(value)]="selcolumnid">
+                  <option *ngFor="let designation of designations;let i = index" value="{{designation.id}}">{{designation.designation}}</option>
+
+                </select>
+                <div class="alert" *ngIf="!editteamForm.controls['mainrole'].valid && editteamForm.controls['mainrole'].touched">{{
+                  titleAlert }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-material">
+                <select class="form-control" name="utype" formControlName="utype" placeholder="Select Type"
+                  [(value)]="seltypeid">
+                  <option *ngFor="let role of roles;let i = index" value="{{role.id}}">{{role.role}}</option>
+
+                </select>
+                <div class="alert" *ngIf="!editteamForm.controls['utype'].valid && editteamForm.controls['utype'].touched">{{
+                  titleAlert }}</div>
+              </div>
+            </div>
+          </div>          
+          <div class="row">
+            <div class="col-md-12 m-b-20">
+              <button type="submit" class="btn btn-primary btn-md btn-block" name="submit_project" [disabled]="!editteamForm.valid">Update</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>

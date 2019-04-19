@@ -1,0 +1,33 @@
+
+    <div class="main content-box">
+        <div class="container-fluid">    
+              <div class="row">
+                <div class="col-12">
+                    <h6>Task Review - By dates</h6>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 p-0">
+                  <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead">
+                          <tr> 
+                            <th scope="col small">DRF Date</th>
+                            <th scope="col small">Score</th>
+                          </tr>
+                        </thead>
+                        <tbody class="tbody">
+                          <tr *ngFor="let taskdrf of taskdrfdata">
+                            <td class="small"><span>{{taskdrf.feedback_date | date: 'MM/dd/yyyy'}}</span></td>
+                            <td class="small"><span class="status-color" [ngClass]="{red:taskdrf.score*2<=3.5,orange:taskdrf.score*2>=3.6 && taskdrf.score*2<=6.9,green:taskdrf.score*2>=7}">{{taskdrf.score*2 | number: '2.1-1'}}</span></td>
+                          </tr>                      
+                                        
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+              </div>   
+                 
+        </div>
+      </div>
+      

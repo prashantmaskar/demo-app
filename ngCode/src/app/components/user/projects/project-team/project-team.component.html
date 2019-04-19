@@ -1,0 +1,72 @@
+   <section class="content-box">
+    <div class="inner-content bg-white">
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <h1>Project Team</h1>
+        </div>
+        <div class="col-12 col-md-8 filtter-main">
+          <div class="addteam-member" *ngIf="user_role=='1'">
+            <form [formGroup]="teamaddForm" method="post" action="" (ngSubmit)="adteammem()" class="md-float-material form-material"
+              [class.show]="show">
+              <mat-form-field>
+                <mat-select placeholder="Members" [formControl]="member" multiple class="form-control">
+                  <mat-option *ngFor="let team of nteammembrs" [value]="team.uid">{{team.first_name}} {{team.last_name}}</mat-option>
+                </mat-select>
+                <mat-error class="error" *ngIf="member.hasError('required')">
+                  Please select atleast one user.
+                </mat-error>
+              </mat-form-field>
+              <button type="submit" mat-raised-button mat-primary color="primary"  [disabled]="setdisable"  class=" btn-md add-btn" name="submit_signin"><i class="fa fa-plus"></i> Add</button>
+            </form>
+          </div>
+          <div class="team-filtter">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" class="form-control">
+          </mat-form-field>
+        </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <div class="table-responsive">
+            <table mat-table #table  [dataSource]="dataSource"   class="mat-elevation-z8 table table-striped">
+              <ng-container matColumnDef="Id">
+                <th mat-header-cell *matHeaderCellDef  > Id </th>
+                <td mat-cell *matCellDef="let teammembrs;let i = index"> {{i+1}} </td>
+              </ng-container>
+              <ng-container matColumnDef="First Name">
+                <th mat-header-cell *matHeaderCellDef > First Name </th>
+                <td mat-cell *matCellDef="let teammembrs"> {{teammembrs.first_name}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Last Name">
+                <th mat-header-cell *matHeaderCellDef > Last Name </th>
+                <td mat-cell *matCellDef="let teammembrs"> {{teammembrs.last_name}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Designation">
+                  <th mat-header-cell *matHeaderCellDef > Role </th>
+                  <td mat-cell *matCellDef="let teammembrs"> {{teammembrs.designation}} </td>
+                </ng-container>
+              <ng-container matColumnDef="Team Lead" >
+                  <th mat-header-cell *matHeaderCellDef >Lead </th>
+                  <td mat-cell *matCellDef="let teammembrs"  >
+                    <span *ngIf="user_role==1;else elseBlock">
+                      <mat-checkbox [value]=teammembrs.user_id [checked]="teammembrs.usr_project_role" *ngIf="teammembrs.usr_project_role!=2" Class="mat-accent" (change)="addlead($event, i, teammembrs.user_id)" >Lead</mat-checkbox>
+                    </span>
+                    <ng-template #elseBlock> <mat-checkbox [value]=teammembrs.user_id [checked]="teammembrs.usr_project_role" *ngIf="teammembrs.usr_project_role!=2"  Class="mat-accent" disabled="" >Lead</mat-checkbox></ng-template>
+                    </td>
+                 
+              </ng-container>
+              <ng-container matColumnDef="Action"  >
+                <th mat-header-cell *matHeaderCellDef > Action </th>
+                <td mat-cell *matCellDef="let teammembrs" [class.show]="show"><button class="btn btn-danger" (click)="openDialog(i,teammembrs.user_id)" *ngIf="user_role==1 && teammembrs.usr_project_role!=2"><i
+                      class="fa fa-trash"></i></button> </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

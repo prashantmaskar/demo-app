@@ -1,0 +1,139 @@
+h6
+    font-size $tertiary-header-size
+    font-weight 700
+    padding 20px 0 0 0
+    color $color-white
+.project-name
+    a
+        span
+            font-size $base-font-size
+            font-weight normal
+.borderless td
+    border none
+.borderless th
+    background-color $color-maroon-primary
+    color $color-white
+.status-color
+    &::after
+        content ''
+        width 50px
+        height 20px
+        margin-left 10px        
+        position absolute
+    &.green
+        &::after
+            background-color $color-green
+    &.red
+        &::after
+            background-color $color-red
+    &.orange
+        &::after
+            background-color $color-orange
+    &.grey
+        &::after
+            background-color #d8d8d8
+            
+.status-color-header
+    &::after
+        content ''
+        width 40px
+        height 10px
+        margin-left 15px
+        margin-top 8px      
+        position absolute
+    &.green
+        &::after
+            background-color $color-green
+    &.red
+        &::after
+            background-color $color-red
+    &.orange
+        &::after
+            background-color $color-orange
+    &.grey
+        &::after
+            background-color #d8d8d8
+.status-color-header-inside
+    &::after
+        content ''
+        width 50px
+        height 20px
+        margin-left 10px 
+        margin-top 3px
+        background-color white       
+        position absolute
+.view-detail
+    margin-left 70px
+
+.table-responsive
+    padding 0 20%
+    text-align left
+    margin-bottom 20px
+    border none
+    table
+        border 1px solid #ccc
+        .small
+            width 145px
+            // text-align right
+        .smallModal
+            width 10%
+            text-align center
+        .checkmark
+            left 50%
+            transform translateX(-50%)
+        .score-1
+            padding-right 55px
+        .container
+            display block
+            position relative
+            padding-left 35px
+            margin-bottom 12px
+            cursor pointer
+            font-size 22px
+            -webkit-user-select none
+            -moz-user-select none
+            -ms-user-select none
+            user-select none
+.custom-width
+    max-width 1200px
+.back-margin
+    margin-bottom 10px
+.modal-title
+    padding-right 40px
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}

@@ -1,0 +1,30 @@
+<div class="main content-box">
+  <div class="container-fluid">    
+        <div class="row">
+          <div class="col-12">
+            <button type="button" (click)="goBack()" class="back-button btn-save btn btn-primary" mat-save color="save" name="submit_signin">Back</button>
+              <h6>DRF - By Project</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 p-0">
+            <div class="table-responsive">
+              <table class="table">
+                  <thead class="thead">
+                    <tr>                   
+                      <th scope="col">Project </th>
+                      <th scope="col" class="text-right">Score</th>
+                    </tr>
+                  </thead>
+                  <tbody class="tbody">
+                    <tr *ngFor="let proj of projects || []; let i=index">
+                      <td class="project-name"><a [routerLink]="['../task-status',proj.proj_id]"><span>{{proj.name}} ({{proj.shortform}})</span></a></td>
+                      <td class="small"><span class="status-color " [ngClass]="{grey:proj.project_score*2==0,red:proj.project_score*2<=3.5,orange:proj.project_score*2>=3.6 && proj.project_score*2<=6.9,green:proj.project_score*2>=7}">{{proj.project_score*2 | number: '1.1-1'}}</span></td>
+                    </tr>                
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </div>          
+  </div>
+</div>

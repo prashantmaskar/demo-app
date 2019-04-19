@@ -1,0 +1,49 @@
+h6
+    font-size $base-font-size
+    font-weight bold
+    padding 20px 0 0 0
+    color $color-white
+.project-name
+    a
+        span
+            font-size $small-font-size
+            font-weight bold
+.header-feedback
+    padding 20px 30%
+    width 100%
+    h6
+        color $color-black
+        text-align left
+.borderless td
+    border none
+.borderless th
+    background-color $color-maroon-primary
+    color $color-white
+.status-color
+    &::after
+        content ''
+        width 50px
+        height 20px
+        margin-left 10px        
+        position absolute
+    &.green
+        &::after
+            background-color $color-green
+    &.red
+        &::after
+            background-color $color-red
+    &.orange
+        &::after
+            background-color $color-orange
+.mat-calendar-period-button
+    display none !important
+.table-responsive
+    padding 0 30%
+    text-align left
+    margin-bottom 20px
+    border none
+    table
+        border 1px solid #ccc
+        .small
+            padding-right 70px
+            text-align right

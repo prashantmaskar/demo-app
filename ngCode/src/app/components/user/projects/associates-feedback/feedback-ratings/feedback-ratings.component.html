@@ -1,0 +1,103 @@
+<div class="main content-box">
+  <div class="container-fluid">
+    <div class="row ">
+        <button type="button" (click)="goBack()" class="back-button ml-15 btn-save btn btn-primary" mat-save color="save" name="submit_signin">Back</button>
+      <form class="col-md-12" [formGroup]="assorateform"  method="post" action=""  (ngSubmit)="onSubmit(assorateform.value)">
+        <div class="header-feedback">
+            <div class="row table-header">
+           
+          <div class="col-md-4" >
+            <mat-form-field>
+              <mat-select tabindex="1" [formControl]="userid" placeholder="Associate" (selectionChange)="onChange($event.value)" >
+                <mat-option *ngFor="let users of userlist" [value]="users.user_id" >{{users.first_name}} {{users.last_name}} </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+          </div>
+          <div class="col-md-4">
+            <!-- <input type="month" class="date" name="start"  formControlName="ratemonth"  (change)="getVal()" value="2018-05" > -->
+            <div class="col-md-12">
+              <mat-form-field>
+                <input tabindex="2" matInput [matDatepicker]="dp" [min]="minDate" [max]="maxDate"  placeholder="Month and Year" [formControl]="date" readonly >
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp
+                                startView="multi-year"
+                                (yearSelected)="chosenYearHandler($event)"
+                                (monthSelected)="chosenMonthHandler($event, dp)"
+                                panelClass="example-month-picker">
+                </mat-datepicker>
+              </mat-form-field>
+             
+
+            </div>
+          </div>
+     
+        </div>
+        
+        <div class="row">
+        <div class="col-12">
+          <div class="table-responsive">
+            <table class="table table-striped ">
+                <thead class="thead">
+                  <tr> 
+                    <th scope="col" colspan="6"></th>
+                    <th scope="col" class="small">Poor</th>
+                    <th scope="col" class="small">Below Average</th>
+                    <th scope="col" class="small">Average </th>
+                    <th scope="col" class="small">Good</th>
+                    <th scope="col" class="small">Excellent</th>
+                    <th scope="col" class="small">Comments</th>
+                  </tr>
+                </thead>
+                <tbody class="tbody">
+                  <tr  *ngFor="let rating of rating_criterias">
+                    <td colspan="6"><span matTooltip="{{rating.description }}" matTooltipPosition="right" matTooltipClass="tooltip-red">{{rating.title}}</span></td>
+                    <td class="small"><label class="container">
+                        <input type="radio" name="r{{rating.id}}" value="1" formControlName="r{{rating.id}}"  >
+                        <span class="checkmark"></span>
+                      </label></td>
+                    <td class="small"><label class="container">
+                        <input type="radio" name="r{{rating.id}}" value="2" formControlName="r{{rating.id}}"  >
+                        <span class="checkmark"></span>
+                      </label></td>
+                    <td class="small"><label class="container">
+                        <input type="radio" name="r{{rating.id}}" value="3"  formControlName="r{{rating.id}}" >
+                        <span class="checkmark"></span>
+                      </label></td>
+                    <td class="small"><label class="container">
+                        <input type="radio" name="r{{rating.id}}" value="4" formControlName="r{{rating.id}}"  >
+                        <span class="checkmark"></span>
+                      </label></td>
+                    <td class="small"><label class="container">
+                        <input type="radio" name="r{{rating.id}}" value="5" formControlName="r{{rating.id}}"  >
+                        <span class="checkmark"></span>
+                      </label></td>
+                      <td class="small">
+                          <input tabindex="3" type="text" name="rc{{rating.id}}" class="additional-comment2" formControlName="rc{{rating.id}}" placeholder="Comments"  >
+                      
+                       </td>
+                  </tr>
+                  <tr >
+                      <td colspan="6"><p><strong>Additional feedback</strong> </p></td>
+                      
+                      <td colspan="7" class="small">
+                          <input tabindex="4" class="additional-comment1 form-control" name="rcomment" formControlName="rcomment" placeholder="Comments" type="text"  >                      
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+              <button tabindex="5" type="submit" [disabled]="!assorateform.valid || disabledbutton" class="feedback-submit btn-save btn btn-primary" mat-raised-button mat-save color="save" name="submit_signin">Submit</button>    
+          </div>
+        </div>
+        
+      </div>                
+      </form>
+
+    </div>
+  </div>
+</div>

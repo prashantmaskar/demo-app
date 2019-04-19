@@ -1,0 +1,24 @@
+<div class="toolbar-user-container">
+  <a mat-button (click)="isOpen = !isOpen" class="toolbar-user-btn" [class.open]="isOpen">
+    <!--<img class="avatar" [src]="currentUser?.photoURL || 'assets/images/avatars/noavatar.png'">-->
+    <i class="fa fa-user-circle fa-lg"></i><label>Account Settings</label><i class="fa fa-chevron-down icon"></i>
+  </a>
+  <div class="dropdown mat-elevation-z1" [class.open]="isOpen">
+    <div class="content p-0">
+      <mat-nav-list>
+        <mat-list-item>
+          <a matLine [routerLink]="['admin']" class="username name"><i class="fa fa-user-circle fa-lg"></i>{{user_name}}</a>
+        </mat-list-item>
+        <!-- <mat-list-item>
+          <a matLine [routerLink]="['admin']"><i class="fa fa-fw fa-th-large"></i>Dashboard</a>
+        </mat-list-item> -->
+        <!--<mat-list-item>
+          <a matLine><i class="fa fa-question-circle"></i>Help</a>
+        </mat-list-item>-->
+        <mat-list-item>
+          <a (click)="logout()" matLine><i class="fa fa-power-off"></i>Logout</a>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </div>
+</div>
