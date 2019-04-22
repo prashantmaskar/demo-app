@@ -45,7 +45,7 @@ const routes: Routes = [
     children:[
       {
         path: '', 
-        redirectTo: 'projectlist',
+        redirectTo: 'ceogoals',
         pathMatch: 'full',
         data:{
           title: 'Project List'
@@ -83,17 +83,17 @@ const routes: Routes = [
       },
       {
         path: 'projects',
-        redirectTo: "projectlist",
+        redirectTo: "ceogoals",
         pathMatch: 'full',
         data:{
           title: 'project List'
         },
         },
         {
-          path: 'projectlist',
+          path: 'ceogoals',
           component: ProjectListComponent,
           data:{
-            title: 'project List'
+            title: 'ceogoals'
           },
         },
         {

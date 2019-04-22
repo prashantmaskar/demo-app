@@ -23,8 +23,8 @@ date_default_timezone_set("Asia/Kolkata");
 | a PHP script and you can easily do that on your own.
 |
 */
-//$config['base_url'] = 'http://localhost/pms/';
-$config['base_url'] = 'http://ceogoals.integrative-systems.com/';
+$config['base_url'] = 'http://localhost/CEOG/demo-app';
+// $config['base_url'] = 'http://ceogoals.integrative-systems.com/';
 
 /*
 |--------------------------------------------------------------------------

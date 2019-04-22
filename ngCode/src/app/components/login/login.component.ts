@@ -55,7 +55,7 @@ user_role:number;
         window.localStorage.setItem("auth-key",users.auth_token);
         window.localStorage.setItem("user_role",users.user_role);
         window.localStorage.setItem("user_name",users.user_fname);
-        this.router.navigate(["user/admin"]);
+        this.router.navigate(["user"]);
        }
        else{
          this.error=true;

@@ -12,7 +12,7 @@ fullScreen = "true"
 <section class="content container-fluid">
   <div class="col-12">
     <div class="row">
-
+<!-- 
       <mat-card class="col-md-3 col-lg-2 col-12" *ngFor="let project of projects">
         <a [routerLink]="['../project',project.proj_id]">
           <div class="card profile-card-3" [ngClass]="{red:project.project_score*2<=3.5,orange:project.project_score*2>=3.6 && project.project_score*2<=6.9,green:project.project_score*2>=7}">
@@ -25,23 +25,54 @@ fullScreen = "true"
             </div>
           </div>
         </a>        
-      </mat-card>
-      <mat-card class="col-md-3 col-lg-2 col-12 " [class.d-none]="show">
-          <a [routerLink]="['../projects/project-status']">
+      </mat-card> -->
+      <mat-card class="col-md-4 col-lg-4 col-12 " [class.d-none]="show">
+          <a [routerLink]="['../admin/monthly-checkin']">
             <div class="card profile-card-3"  >
               <div class="profile-thumb-block">
                 <!--<img src="/assets/rise-logo.png" alt="profile-image" class="profile" *ngIf="user_role!='1'"/>-->
-                <img src="/assets/clients/integrative-logo.png" alt="profile-image" class="profile"/>
+                <!-- <img src="/assets/clients/integrative-logo.png" alt="profile-image" class="profile"/> -->
+                <i class="fa fa-calendar fa-2x"></i>
               </div>
               <div class="card-content">
-                <h4>DRF</h4>
-                <p>Delivery Review and Feedback</p>
+                <h4>Monthly Meeting Check-In</h4>
+                <!-- <p>Monthly Meeting Check-In</p> -->
+              </div>
+            </div>
+          </a>        
+        </mat-card>
+        <mat-card class="col-md-4 col-lg-4 col-12 " [class.d-none]="show">
+          <a [routerLink]="['../admin/detail']">
+            <div class="card profile-card-3"  >
+              <div class="profile-thumb-block">
+                <!--<img src="/assets/rise-logo.png" alt="profile-image" class="profile" *ngIf="user_role!='1'"/>-->
+                <!-- <img src="/assets/clients/integrative-logo.png" alt="profile-image" class="profile"/> -->
+                <i class="fa fa-bullseye fa-2x"></i>
+              </div>
+              <div class="card-content">
+                <h4>Personal & Professional Goal Tracking</h4>
+                <!-- <p>Delivery Review and Feedback</p> -->
+              </div>
+            </div>
+          </a>        
+        </mat-card>
+        <mat-card class="col-md-4 col-lg-4 col-12 " [class.d-none]="show">
+          <a [routerLink]="['../admin/reports']">
+            <div class="card profile-card-3"  >
+              <div class="profile-thumb-block">
+                <!--<img src="/assets/rise-logo.png" alt="profile-image" class="profile" *ngIf="user_role!='1'"/>-->
+                <!-- <img src="/assets/clients/integrative-logo.png" alt="profile-image" class="profile"/> -->
+                <i class="fa fa-bar-chart fa-2x"></i>
+              </div>
+              <div class="card-content">
+                <h4>Financial Metrics</h4>
+                <!-- <p>Delivery Review and Feedback</p> -->
               </div>
             </div>
           </a>        
         </mat-card>
     </div>
   </div>
-  <div class="slogan-box"><h4 class="slogan d-inline"><strong>ACTIONABLE FEEDBACK &#8680;</strong> <span class="inside"> Measurable Performance, Enhanced Collaboration, Successful Deployments</span></h4> </div>
+  <!-- <div class="slogan-box"><h4 class="slogan d-inline"><strong>ACTIONABLE FEEDBACK &#8680;</strong> <span class="inside"> Measurable Performance, Enhanced Collaboration, Successful Deployments</span></h4> </div> -->
   
 </section>

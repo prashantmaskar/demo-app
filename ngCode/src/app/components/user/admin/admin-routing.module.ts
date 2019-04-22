@@ -38,7 +38,7 @@ const routes: Routes = [
       component:AddProjectComponent
       },
       {
-         path:'client',
+         path:'monthly-checkin',
          component: ClientComponent
        },
        {

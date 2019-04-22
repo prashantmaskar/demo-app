@@ -1,11 +1,9 @@
 <div class="bg-white">
   <div class="row details">
     <div class="col-md-12 col-xs-12 details-container">
-      <h6>Manage Clients</h6>
+      <h6>Monthly Meeting Check-In</h6>
     </div>
-    <div class="col-md-6 sectionhead-title" *ngIf="user_role==1">
-        <button class="btn btn-primary add-client" (click)="openteam()">Add Client</button>
-      </div>
+
   </div>
   <div class="row">
     <div class="col-md-12 col-xs-12">
@@ -13,20 +11,40 @@
         <table class="table table-striped">
           <thead class="thead">
             <tr>
-              <th>Client</th>
-              <th>Client Logo</th>
-              <th class="action-th">Action</th>
+              <th></th>
+              <th>
+                Personal
+               <span>(1-10)</span> 
+              </th>
+              <th>
+                  Business
+                 <span>(1-10)</span> 
+                </th>
+                <th>
+                    Health
+                   <span>(1-10)</span> 
+                  </th>
+                  <th>
+                      Issue or
+                      Opportunity
+                      
+                    </th>
+                    <th>
+                        Rate the 1 st Quarter of
+
+                        2019 
+                      </th>
+                   
             </tr>
           </thead>
           <tbody class="tbody">
-            <tr *ngFor="let client of clients;let i = index">
-              <td>{{client.c_name}}</td>
-              <td><img src="/assets/clients/{{client.c_logo}}" class="img-thumbnail wd100"></td>
-              <td class="action-td">
-                <button type="button" class="btn btn-info" (click)="onEdit(client.id)" *ngIf="user_role==1"><i class="fa fa-edit"></i></button>
-                <button type="button" class="btn btn-danger" (click)="openDialog(i,client.id)" *ngIf="user_role==1"><i
-                    class="fa fa-trash"></i></button>
-              </td>
+            <tr >
+             <td>Adam</td>
+             <td><input type="text" class="form-control"></td>
+             <td><input type="text" class="form-control"></td>
+             <td><input type="text" class="form-control"></td>
+             <td><input type="text" class="form-control"></td>
+             <td><input type="text" class="form-control"></td>
             </tr>
           </tbody>
         </table>
@@ -35,48 +53,4 @@
 
   </div>
 </div>
-<div class="backdrop" [ngStyle]="{'display':display}"></div>
-<div class="modal" id="myModal" [ngStyle]="{'display':display}" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Manage Client</h4>
-        <button type="button" class="close" (click)="onCloseHandled()" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="add-clientForm" *ngIf="user_role==1">
-          <form class="form-inline" [formGroup]="designForm" method="POST" action="" (ngSubmit)="add_client(designForm.value)">
-              <div class="form-group">
-                  <span>Client Name*</span>
-                  <input type="hidden" name="client_id" formControlName="client_id">
-                  <input type="text" class="form-control client-name-input" id="client" placeholder="Client Name" name="client"
-                    formControlName="client" #focusauto>
-                  <div class="alert" *ngIf="!designForm.controls['client'].valid && designForm.controls['client'].touched">{{
-                    titleAlert }}</div>
-                </div>
-    
-                
-            <div class="form-group">    
-              <input class="overhidd upload-file" name="upload" #upload_attachment type="file" (change)="selectFile($event)"
-                placeholder="Upload file" accept=".png,.jpeg">
-            </div>
-            <div class="img-preview">
-                <img [src]="url" height="200">
-            </div>
-            <div class="form-group col-md-12">
-              
-                <button type="submit" class="btn btn-primary btn-md save-button" name="submit_project" [disabled]="!designForm.valid">Save</button>
-            </div>
-           
 
-          </form>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</div>
